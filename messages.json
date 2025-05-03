@@ -162,6 +162,15 @@
       "timestamp": "[20:51 PM]",
       "status": "Sent",
       "messageId": "user2-1746240717006-hi"
+    },
+    {
+      "type": "user",
+      "userName": "user2",
+      "userId": "1746208477221-6zf601zzq",
+      "content": "hi",
+      "timestamp": "[22:08 PM]",
+      "status": "Sent",
+      "messageId": "user2-1746245282975-hi"
     }
   ]
 }

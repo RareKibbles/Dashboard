@@ -335,6 +335,28 @@ document.addEventListener('DOMContentLoaded', () => {
     checkSession();
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+    const tabs = document.querySelectorAll('.tab');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const targetTabId = tab.getAttribute('data-tab');
+
+            // Remove active class from all tabs and contents
+            tabs.forEach(t => t.classList.remove('active'));
+            tabContents.forEach(content => content.classList.remove('active'));
+
+            // Add active class to the clicked tab and corresponding content
+            tab.classList.add('active');
+            const targetContent = document.getElementById(targetTabId);
+            if (targetContent) {
+                targetContent.classList.add('active');
+            }
+        });
+    });
+});
+
 function viewAllContacts() {
     switchTab('p2p');
     setTimeout(() => {
@@ -2741,5 +2763,104 @@ new Chart(ctx, {
             }
         }
     }
+});
+
+// Forums Tab Functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const forumsTab = document.getElementById('forums');
+    const questionForm = document.getElementById('question-form');
+    const questionsContainer = document.getElementById('questions-container');
+
+    if (forumsTab && questionForm && questionsContainer) {
+        questionForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            // Get the question details
+            const type = document.getElementById('question-type').value;
+            const title = document.getElementById('question-title').value;
+            const body = document.getElementById('question-body').value;
+
+            // Create a new question element
+            const questionItem = document.createElement('li');
+            questionItem.innerHTML = `
+                <strong>${title}</strong>
+                <p>${body}</p>
+                <button class="answer-btn action-button">Answer</button>
+            `;
+
+            // Add the question to the appropriate list
+            const containerId = type.toLowerCase().replace(/ /g, '-') + '-questions';
+            const targetList = document.getElementById(containerId);
+            if (targetList) {
+                targetList.appendChild(questionItem);
+            }
+
+            // Clear the form
+            questionForm.reset();
+        });
+
+        questionsContainer.addEventListener('click', (event) => {
+            if (event.target.classList.contains('answer-btn')) {
+                const questionItem = event.target.closest('li');
+                const answerForm = document.createElement('div');
+                answerForm.innerHTML = `
+                    <textarea class="answer-input" placeholder="Type your answer..."></textarea>
+                    <button class="submit-answer-btn action-button">Submit Answer</button>
+                `;
+                questionItem.appendChild(answerForm);
+                event.target.remove(); // Remove the "Answer" button
+            } else if (event.target.classList.contains('submit-answer-btn')) {
+                const answerInput = event.target.previousElementSibling;
+                const answerText = answerInput.value.trim();
+                if (answerText) {
+                    const answerItem = document.createElement('p');
+                    answerItem.classList.add('answer');
+                    answerItem.textContent = `Answer: ${answerText}`;
+                    event.target.closest('li').appendChild(answerItem);
+                    event.target.closest('div').remove(); // Remove the answer form
+                }
+            }
+        });
+    }
+});
+
+// Bar Chart Setup
+document.addEventListener('DOMContentLoaded', () => {
+    const ctx = document.getElementById('barChart').getContext('2d');
+
+    // Data for the bar chart
+    const data = {
+        labels: ['January', 'February', 'March', 'April', 'May'],
+        datasets: [
+            {
+                label: 'Monthly Data',
+                data: [10, 20, 30, 40, 50],
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }
+        ]
+    };
+
+    // Configuration for the bar chart
+    const config = {
+        type: 'bar',
+        data: data,
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'Sample Bar Chart'
+                }
+            }
+        }
+    };
+
+    // Render the bar chart
+    new Chart(ctx, config);
 });
 
