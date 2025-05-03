@@ -1,0 +1,74 @@
+[
+  {
+    "userId": "458349",
+    "username": "Alec",
+    "password": "Waluigi59",
+    "balance": 1225
+  },
+  {
+    "userId": "1745644058397-ol9wcwmqi",
+    "username": "Victor",
+    "password": "victor",
+    "balance": 993
+  },
+  {
+    "userId": "1745644097390-g5hcekosu",
+    "username": "Noah",
+    "password": "noah",
+    "balance": 1002
+  },
+  {
+    "userId": "1745644126105-mbln240mz",
+    "username": "Brian",
+    "password": "Brian",
+    "balance": 780
+  },
+  {
+    "userId": "1745647057040-m0qtqmil0",
+    "username": "test",
+    "password": "test",
+    "balance": 1000
+  },
+  {
+    "userId": "1745733243590-xvtozmtlq",
+    "username": "emilio",
+    "password": "emilio",
+    "balance": 1000
+  },
+  {
+    "userId": "1746032410628-l49ervrbd",
+    "username": "yeyeye",
+    "password": "Bc195!c",
+    "balance": 0
+  },
+  {
+    "userId": "1746032511748-xohox7xfh",
+    "username": "yeye",
+    "password": "727611",
+    "balance": 0
+  },
+  {
+    "userId": "1746121678317-g692hgfxz",
+    "username": "leye",
+    "password": "Bc123!45",
+    "balance": 0
+  },
+  {
+    "userId": "1746121883009-72kdy2bwj",
+    "username": "user1",
+    "password": "Bc123!45",
+    "balance": 0
+  },
+  {
+    "userId": "1746122476152-yz8a061fk",
+    "username": "users2",
+    "password": "$2b$10$LltRuI55RF9DuefUqNrPrOQWnHeaeV8.MHe6yymhkPe/RUyM3bYBS",
+    "balance": 0
+  },
+  {
+    "userId": "1746208477221-6zf601zzq",
+    "username": "user2",
+    "password": "$2b$10$jS2402QiRAstaHyyyWNlHuEypnjZLTjxVJ76H1IjvYZt.gT6zj1/i",
+    "balance": 0
+  }
+]

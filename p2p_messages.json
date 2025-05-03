@@ -1,0 +1,11 @@
+[
+  {
+    "type": "bot",
+    "userName": "ByteBot",
+    "content": "Hello! How can I assist you today, User?",
+    "timestamp": "[14:14 PM]",
+    "status": "Sent",
+    "messageId": "ByteBot-[14:14 PM]-Hello! How can I assist you today, User?",
+    "chatType": "p2p"
+  }
+]

@@ -1,0 +1,885 @@
+<!-- index.html -->
+
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>ByteChat Dashboard</title>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+            <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+            <!-- Skeuomorphic theme (enabled by default) -->
+            <link rel="stylesheet" id="skeuomorphic-theme" href="styles.css">
+            <!-- Frosted theme (disabled by default) -->
+            <link rel="stylesheet" id="frosted-theme" href="frosted-styles.css" disabled>
+        </head>
+        <body> 
+            <!-- Login Status Section -->
+            <div class="login-status-container">
+                <div class="login-status-wrapper">
+                    <span id="login-status" class="login-status-text">Logged in as User</span>
+                    <span id="user-id" class="user-id-text">(ID: Unknown)</span>
+                </div>
+                <button id="logout-btn" class="action-button">
+                    <i class="fas fa-sign-out-alt"><i class="fas fa-sign-out"></i></i> Logout
+                </button>
+            </div>
+            <img src="assets/ByteChatLogo.png" alt="ByteChat Logo" class="logo">
+            <h1 class="dashboard-heading">ByteChat Peer-To-Peer Dashboard</h1>
+        <!----- Tab Content Container -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+        <!----- Tab Content Container ------------------------------------------------------------------- ██████ ----------------------------------------------------------------------------------------------------------------------------------------------------------->
+        <!----- Tab Content Container ------------------------------------------------------------------- ██  ██ ----------------------------------------------------------------------------------------------------------------------------------------------------------->
+        <!----- Tab Content Container ------------------------------------------------------------------- ██  ██ ----------------------------------------------------------------------------------------------------------------------------------------------------------->
+        <!----- Tab Content Container ------------------------------------------------------------------- ██  ██ ----------------------------------------------------------------------------------------------------------------------------------------------------------->
+        <!----- Tab Content Container ------------------------------------------------------------------- ██████ ----------------------------------------------------------------------------------------------------------------------------------------------------------->
+        <!----- Tab Content Container -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+            <div class="tab-bar">
+                <button class="tab active" data-tab="dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</button>
+                <button class="tab" data-tab="p2p"><i class="fas fa-users"></i> P2P</button>
+                <button class="tab" data-tab="file-transfer"><i class="fas fa-file-upload"></i> File Transfer</button>
+                <button class="tab" data-tab="security"><i class="fas fa-shield-alt"></i> Security</button>
+                <button class="tab" data-tab="qna"><i class="fas fa-question-circle"></i> Q&A</button>
+                <button class="tab" data-tab="forums"><i class="fas fa-comments"></i> Forums</button>
+                <button class="tab" data-tab="references"><i class="fas fa-book"></i> References</button>
+            </div>
+        <!-------- DashBoard Tab ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+        <!-------- DashBoard Tab ------------------------------------------------------------------------- ██ -------------------------------------------------------------------------------------------------------------------------------------------------------------->
+        <!-------- DashBoard Tab ------------------------------------------------------------------------- ██ -------------------------------------------------------------------------------------------------------------------------------------------------------------->
+        <!-------- DashBoard Tab ------------------------------------------------------------------------- ██ -------------------------------------------------------------------------------------------------------------------------------------------------------------->
+        <!-------- DashBoard Tab ------------------------------------------------------------------------- ██ -------------------------------------------------------------------------------------------------------------------------------------------------------------->
+        <!-------- DashBoard Tab ------------------------------------------------------------------------- ██ -------------------------------------------------------------------------------------------------------------------------------------------------------------->
+        <!-------- DashBoard Tab ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+        <div class="tab-content-container">
+            <div class="tab-content active" id="dashboard">
+                <div class="dashboard-container">
+                    <!-- Quick Access Tools ------------------------------------------------------------------------------------------------------------------------------------------------------------->
+                    <!-- Quick Access Tools ------------------------------------------------------------------------------------------------------------------------------------------------------------->
+                    <div class="widget" style="grid-column: 1 / 2; grid-row: 1 / 2;">
+                        <h3><i class="fas fa-tools"></i> Quick Access Tools</h3>
+                        <p>Quick Tools:</p>
+                        <p><i class="fas fa-undo"></i> Reset Session</p>
+                        <p><i class="fas fa-trash"></i> Clear Cache</p>
+                        <p><i class="fas fa-wifi"></i> Reconnect Network</p>
+                        <p><i class="fas fa-history"></i> Purge History</p>
+                        <button id="reset-session" class="action-button"><i class="fas fa-undo"></i> Reset Session</button>
+                        <button id="clear-cache" class="action-button"><i class="fas fa-trash"></i> Clear Cache</button>
+                        <button id="reconnect-network" class="action-button"><i class="fas fa-wifi"></i> Reconnect Network</button>
+                        <button id="purge-history" class="action-button"><i class="fas fa-history"></i> Purge History</button>
+                        <button class="action-button"><i class="fas fa-play"></i> Run All</button>
+                    </div>
+                    <!-- P2P Activity ------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+                    <!-- P2P Activity ------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+                    <div class="widget p2p-preview" style="grid-column: 2 / 3; grid-row: 1 / 2;" id="p2p-preview">
+                        <h3><i class="fas fa-exchange-alt"></i> P2P Activity</h3>
+                        <div class="transaction-log">
+                            <ul id="p2p-preview-transaction-list"></ul>
+                        </div>
+                        <button class="action-button view-more-p2p" data-tab="p2p"><i class="fas fa-eye"></i> View More</button>
+                    </div>
+                <!-- TO BE ANNOUNCED ------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
+                    <!-- Contacts Preview Widget -->
+                    <div class="widget contacts-preview" style="grid-column: 3 / 4; grid-row: 1 / 2;">
+                        <h3 class="contacts-preview-title"><i class="fas fa-users"></i> CONTACTS PREVIEW</h3>
+                        <ul id="contacts-preview-list">
+                            <!-- Contacts will be populated dynamically -->
+                        </ul>
+                        <button class="view-all-btn" onclick="viewAllContacts()">VIEW ALL</button>
+                    </div>
+                    <!-- Bot Chat ----------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+                    <!-- Bot Chat ----------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+                    <div class="widget bot-chat-window" style="grid-column: 4 / 6; grid-row: 1 / 2;" id="bot-chat">
+                        <div class="bot-chat-container">
+                            <h3><i class="fas fa-robot"></i> Bot Chat</h3>
+                            <div id="bot-chat-box" class="bot-chat-box"></div>
+                            <div class="bot-input-container">
+                                <input type="text" id="bot-user-input" placeholder="Type Your Question...." autocomplete="off" />
+                                <button id="bot-send-btn" class="action-button">Send</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- FAQ Preview --------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+                    <!-- FAQ Preview --------------------------------------------------------------------------------------------------------------------------------------------------------------------->             
+                    <div class="widget faq-preview" style="grid-column: 1 / 3; grid-row: 3 / 4;" id="faq-preview">
+                        <h3><i class="fas fa-question-circle"></i> FAQ Preview</h3>
+                        <div class="faq-preview-cards">
+                            <div class="qna-card">
+                                <div class="qna-card-inner">
+                                    <div class="qna-card-front">
+                                        <h3 class="qna-toggle"><span class="qna-number">1.</span> <span class="qna-question">Can I use P2P on a mobile device?</span></h3>
+                                    </div>
+                                    <div class="qna-card-back">
+                                        <p class="qna-answer">Yes, users are able to make transactions and receive payments using their mobile devices.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="qna-card">
+                                <div class="qna-card-inner">
+                                    <div class="qna-card-front">
+                                        <h3 class="qna-toggle"><span class="qna-number">2.</span> <span class="qna-question">What are some examples of P2P applications?</span></h3>
+                                    </div>
+                                    <div class="qna-card-back">
+                                        <p class="qna-answer">There are file sharing P2P applications such as BitTorrent, LimeWire, Kazaa, eMule, Gnutella, and Soulseek.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="action-button view-all-faqs" data-tab="qna"><i class="fas fa-book"></i> View All FAQs</button>
+                    </div>
+                <!-- TO BE ANNOUNCED ------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
+                <!-- TO BE ANNOUNCED ------------------------------------------------------------------------------------------------------------------------------------------------------------------------>             
+                    <!-- <div class="widget" style="grid-column: 2 / 3; grid-row: 3 / 4;" id="support-analytics">             
+                        <h3><i class="fas fa-chart-bar"></i> To Be Anounced</h3>
+                        <button class="action-button">View Details</button>
+                    </div> -->
+                    <!-- Need More Help? ----------------------------------------------------------------------------------------------------------------------------------------------------------------->
+                    <!-- Need More Help? ----------------------------------------------------------------------------------------------------------------------------------------------------------------->             
+                    <div class="widget" style="grid-column: 1 / 3; grid-row: 4 / 5;">
+                        <h3><i class="fas fa-question-circle"></i> Need More Help?</h3>
+                        <div class="button-container">
+                            <button id="contact-support" class="action-button"><i class="fas fa-life-ring"></i> Contact Support</button>
+                            <button id="read-docs" class="action-button"><i class="fas fa-book"></i> Read Docs</button>
+                            <button id="theme-toggle" class="action-button"><i class="fas fa-adjust"></i> Toggle Theme</button>
+                        </div>
+                    </div>
+                <!-- TO BE ANNOUNCED ------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
+                <!-- TO BE ANNOUNCED ------------------------------------------------------------------------------------------------------------------------------------------------------------------------>             
+                    <!-- <div class="widget" style="grid-column: 2 / 3; grid-row: 4 / 4;" id="new-widget-4"> 
+                        <h3><i class="fas fa-chart-bar"></i> To Be Anounced</h3>
+                        <button class="action-button">View Details</button>
+                    </div> -->
+                    <!-- ByteChat Live Messaging ---------------------------------------------------------------------------------------------------------------------------------------------------------->
+                    <!-- ByteChat Live Messaging ---------------------------------------------------------------------------------------------------------------------------------------------------------->             
+                    <div class="widget chat-window" style="grid-column: 3 / 6; grid-row: 3 / 5;">
+                        <button class="action-button expand-button" id="expand-chat"><i class="fas fa-expand"></i></button>
+                        <button class="action-button close-button" id="close-chat"><i class="fas fa-times"></i></button>
+                        <div class="chat-container">
+                            <div class="chat-header">
+                                <h3><i class="fas fa-comments"></i> ByteChat Live Messaging</h3>
+                                <div class="chat-controls">
+                                    <button class="action-button tab-btn" data-tab="contacts">Contacts</button>
+                                    <button class="action-button tab-btn" data-tab="new">New Message</button>
+                                    <button class="action-button tab-btn" data-tab="messages">Messages</button>
+                                </div>
+                            </div>
+                            <div id="chat-box">
+                                <div class="message bot">
+                                    <span class="username">ByteBot</span>
+                                    <span class="avatar"><i class="fas fa-robot"></i></span>
+                                    <span class="content">Welcome to ByteChat!</span>
+                                    <div id="mtd-time"></div>
+                                    <span class="status">Sent</span>
+                                </div>
+                            </div>
+                            <div class="input-container">
+                                <input type="text" id="user-input" placeholder="Type your message..." autocomplete="off" />
+                                <button id="emoji-btn" class="action-button"><i class="fas fa-smile"></i> Emoji</button>
+                                <button id="send-btn" class="action-button"><i class="fas fa-paper-plane"></i> Send</button>
+                                <input type="file" id="file-input" style="display: none;" autocomplete="off" />
+                                <button id="attach-btn" class="action-button"><i class="fas fa-paperclip"></i> Attach</button>
+                            </div>
+                            <div id="emoji-picker" style="display: none;"></div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <!------------ P2P Tab --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+        <!------------ P2P Tab -------------------------------------------------------------------------- ██████ ----------------------------------------------------------------------------------------------------------------------------------------------------------->
+        <!------------ P2P Tab --------------------------------------------------------------------------     ██ ----------------------------------------------------------------------------------------------------------------------------------------------------------->
+        <!------------ P2P Tab -------------------------------------------------------------------------- ██████ ----------------------------------------------------------------------------------------------------------------------------------------------------------->
+        <!------------ P2P Tab -------------------------------------------------------------------------- ██     ----------------------------------------------------------------------------------------------------------------------------------------------------------->
+        <!------------ P2P Tab -------------------------------------------------------------------------- ██████ ----------------------------------------------------------------------------------------------------------------------------------------------------------->
+        <!------------ P2P Tab --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+        <div id="p2p" class="tab-content">
+            <div class="dashboard-container">
+                <!-- P2P Money Transfer -------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+                <!-- P2P Money Transfer -------------------------------------------------------------------------------------------------------------------------------------------------------------------->         
+                <div class="widget active-p2p-connections" style="grid-column: 1 / 4; grid-row: 1 / 3;">
+                    <h3>P2P Money Transfer</h3>
+                    <div class="p2p-transfer-wrapper">
+                        <!-- Left Column: Balance + Send Form -->
+                        <div class="p2p-left-column">
+                            <!-- Balance Display -->
+                            <div class="balance-display">
+                                <h4>Your Balance</h4>
+                                <p class="balance-amount">$0.00</p>
+                            </div>
+                            <div class="p2p-send-form">
+                                <label for="peer" class="soft-label">Select Peer</label>
+                                <select id="peer" class="peer-select">
+                                    <option value="">Select a peer...</option>
+                                    <!-- Options will be populated dynamically via script.js -->
+                                </select>
+                                <label for="amount" class="soft-label">Amount (USD)</label>
+                                <input type="number" id="amount" class="amount-input" placeholder="Enter amount" step="0.01" min="0" autocomplete="off" />
+                                <label for="note" class="soft-label">Note</label>
+                                <input type="text" id="note" class="note-input" placeholder="(optional) For lunch, rent..." autocomplete="off" />
+                                <div class="form-buttons">
+                                    <button class="p2p-send-button">Send Money</button>
+                                    <button class="cancel-button">Cancel</button>
+                                    <button class="request-button">Request Payment</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Right Column: Transaction History Log -->
+                        <div class="p2p-right-column">
+                            <div class="transaction-log">
+                                <h4>Recent Transfers</h4>
+                                <ul id="transaction-list">
+                                    <!-- Transaction entries will be added dynamically via JavaScript -->
+                                    <!-- Example transaction structure (for reference, will be populated by script.js):
+                                    <li class="sent" data-transaction-id="123">
+                                        <span class="transaction-line-1">User sent $50 to John Doe at 12:00 PM</span>
+                                        <span class="transaction-line-2">$50 sent to John Doe – 12:00 PM [Note: Lunch]</span>
+                                    </li>
+                                    <li class="request-received pending" data-transaction-id="456">
+                                        <span class="transaction-line-1">Jane Smith requested $30 from User at 12:05 PM</span>
+                                        <span class="transaction-line-2">$30 requested by Jane Smith – 12:05 PM (pending)</span>
+                                        <button class="approve-btn">Approve</button>
+                                        <button class="decline-btn">Decline</button>
+                                    </li>
+                                    -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Confirmation Prompt -->
+                    <div class="confirmation-prompt" id="confirmation-prompt">
+                        <p id="confirmation-message">Are you sure you want to send $80 to John Doe?</p>
+                        <div class="confirmation-buttons">
+                            <button class="confirm-button">Yes</button>
+                            <button class="cancel-button">No</button>
+                        </div>
+                    </div>
+                    <!-- Request Payment Prompt -->
+                    <div class="request-prompt" id="request-prompt">
+                        <p id="request-message">Request payment from John Doe</p>
+                        <label for="request-amount" class="soft-label">Amount (USD)</label>
+                        <input type="number" id="request-amount" class="request-amount-input" placeholder="Enter amount" step="0.01" min="0" autocomplete="off" />
+                        <label for="request-note" class="soft-label">Note</label>
+                        <input type="text" id="request-note" class="request-note-input" placeholder="(optional) For lunch, rent..." autocomplete="off" />
+                        <div class="request-buttons">
+                            <button class="request-confirm-button">Send Request</button>
+                            <button class="request-cancel-button">Cancel</button>
+                        </div>
+                    </div>
+                    <!-- Toast Notification -->
+                    <div class="p2p-toast" id="p2p-toast">
+                        <span id="toast-message"></span>
+                        <button class="close-toast">✖️</button>
+                    </div>
+                    <!-- Confirmation Stamp -->
+                    <div class="confirmation-stamp" id="confirmation-stamp">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                </div>       
+                <!-- New Contacts Widget -------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+                <!-- New Contacts Widget -------------------------------------------------------------------------------------------------------------------------------------------------------------------->                 
+                <div class="widget contacts-grid-container" style="grid-column: 4 / 9; grid-row: 1 / 3;">
+                    <h4 class="contacts-title">Your Contacts</h4>
+                    <div class="add-contact-form">
+                        <input type="text" id="contact-username" placeholder="Enter username..." class="contact-input" autocomplete="off" />
+                        <button id="add-contact-btn" class="action-button">Add Contact</button>
+                    </div>
+                    <div class="contacts-list-container">
+                        <ul id="contacts-list"></ul>
+                    </div>
+                </div>
+                <!-- P2P Frequently Asked Questions -------------------------------------------------------------------------------------------------------------------------------------------------------->
+                <!-- P2P Frequently Asked Questions -------------------------------------------------------------------------------------------------------------------------------------------------------->         
+                
+                <!-- P2P Network Insights ----------------------------------------------------------------------------------------------------------------------------------------------------------------->
+                <!-- P2P Network Insights ----------------------------------------------------------------------------------------------------------------------------------------------------------------->         
+                <!-- <div class="widget" style="grid-column: 1 / 3; grid-row: 4 / 9;">
+                    <div class="p2p-insights-container">
+                        <h2 class="p2p-insights-title">P2P Network Insights</h2>
+                        <div class="p2p-insights-content">
+                            <div class="p2p-insights-section">
+                                <h3>Advantages of P2P Networks</h3>
+                                <ul>
+                                    <li>Decentralization and resilience aspect</li>
+                                    <li>Easy scalability</li>
+                                    <li>Efficient resource utilization</li>
+                                    <li>Cost savings</li>
+                                    <li>Direct communication and faster content delivery</li>
+                                    <li>Enhanced privacy and security</li>
+                                </ul>
+                            </div>
+                            <div class="p2p-insights-section">
+                                <h3>Disadvantages of P2P Networks</h3>
+                                <ul>
+                                    <li>Lack of centralized control</li>
+                                    <li>Network management complexity</li>
+                                    <li>Dependency on peer availability</li>
+                                    <li>Performance and efficiency variability</li>
+                                    <li>Legal risks</li>
+                                    <li>Security and copyright concerns</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <!-- ByteChat Live Messaging -------------------------------------------------------------------------------------------------------------------------------------------------------------->
+                <!-- ByteChat Live Messaging -------------------------------------------------------------------------------------------------------------------------------------------------------------->    
+                <div class="p2p-overlay"></div>     
+                <div class="widget p2p-chat-window" style="grid-column: 3 / 9; grid-row: 3 / 9;">
+                    <button class="action-button p2p-expand-button" id="p2p-expand-chat"><i class="fas fa-expand"></i></button>
+                    <button class="action-button p2p-close-button" id="p2p-close-chat"><i class="fas fa-times"></i></button>
+                    <div class="p2p-chat-container">
+                        <div class="p2p-chat-header">
+                            <h3><i class="fas fa-comments"></i> P2P ByteChat Live Messaging</h3>
+                            <div class="chat-controls">
+                                <button class="action-button p2p-tab-btn" data-tab="contacts">Contacts</button>
+                                <button class="action-button p2p-tab-btn" data-tab="new">New Message</button>
+                                <button class="action-button p2p-tab-btn" data-tab="messages">Messages</button>
+                            </div>
+                        </div>
+                    
+                        <div id="p2p-chat-box">
+                            <!-- This will change based on the selected tab -->
+                            <div class="message bot">
+                                <span class="username">ByteBot</span>
+                                <span class="avatar"><i class="fas fa-robot"></i></span>
+                                <span class="content">Welcome to P2P ByteChat!</span>
+                                <div id="mtd-time"></div>
+                                <span class="status">Sent</span>
+                            </div>
+                        </div>
+                    
+                        <div class="p2p-input-container">
+                            <input type="text" id="p2p-user-input" placeholder="Type your message..." autocomplete="off" />
+                            <button id="p2p-emoji-btn" class="action-button"><i class="fas fa-smile"></i> Emoji</button>
+                            <button id="p2p-send-btn" class="action-button"><i class="fas fa-paper-plane"></i> Send</button>
+                            <input type="file" id="p2p-file-input" style="display: none;" autocomplete="off" />
+                            <button id="p2p-attach-btn" class="action-button"><i class="fas fa-paperclip"></i> Attach</button>
+                        </div>
+                    
+                        <div id="p2p-emoji-picker" style="display: none;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!------ File Transfer Tab ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+        <!------ File Transfer Tab --------------------------------------------------------------------- ███████ ----------------------------------------------------------------------------------------------------------------------------------------------------------->
+        <!------ File Transfer Tab ---------------------------------------------------------------------      ██ ----------------------------------------------------------------------------------------------------------------------------------------------------------->
+        <!------ File Transfer Tab ---------------------------------------------------------------------   █████ ----------------------------------------------------------------------------------------------------------------------------------------------------------->
+        <!------ File Transfer Tab ---------------------------------------------------------------------      ██ ----------------------------------------------------------------------------------------------------------------------------------------------------------->
+        <!------ File Transfer Tab --------------------------------------------------------------------- ███████ ----------------------------------------------------------------------------------------------------------------------------------------------------------->
+        <!------ File Transfer Tab ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+        <div class="tab-content" id="file-transfer">
+            <div class="dashboard-container">
+                
+                <!-- TO BE ANNOUNCED ------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
+                <!-- TO BE ANNOUNCED ------------------------------------------------------------------------------------------------------------------------------------------------------------------------>                 
+                <div class="widget" style="grid-column: 3/8; grid-row: 1 / 2;">
+                    <h3><i class="fas fa-chart-bar"></i> How does p2p work in file transfer? </h3>
+                    <body>
+                        File transfer using P2P (peer-to-peer) technology allows users to share files directly with each other without the need for a central server. In a P2P network, each participant (or peer) acts as both a client and a server, enabling them to upload and download files from one another. This decentralized approach enhances speed, reduces bandwidth costs, and increases reliability by distributing the load across multiple peers.
+                    </body>
+
+
+                    <button class="action-button">View Details</button>
+                </div>
+
+                <!-- Pie chart  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
+            
+                <!-- TO BE ANNOUNCED ------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
+                <!-- TO BE ANNOUNCED ------------------------------------------------------------------------------------------------------------------------------------------------------------------------>                 
+                <div class="widget" style="grid-column: 3 /8; grid-row: 2 / 3">
+                    <h3><i class="fas fa-chart-bar"></i> Examples</h3>
+
+                    <body>
+                        Examples of P2P file transfer applications include BitTorrent, eMule, and Gnutella. These applications allow users to share large files, such as videos, 
+                        music, and software, by breaking them into smaller pieces and distributing them across the network. Each peer can download different pieces from multiple sources simultaneously, 
+                        resulting in faster download speeds and improved efficiency.
+                    
+                        
+                    </body>
+                    <button class="action-button">View Details</button>
+                </div> 
+                <!-- <div class="widget" style="grid-column: 1/3; grid-row: 3/4;">
+                    <h3><i class="fas fa-chart-bar"></i> Users</h3>
+                    <h3> populationGraph</h3>
+                    
+                </div> -->
+
+
+                <!-- WHat is P2P widget ------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
+                <div class="widget" style="grid-column: 1/3; grid-row: 1/3">
+                    <h3><i class="fas fa-chart-bar"></i> Examples</h3>
+                
+                    <body2>
+                        Examples of P2P file transfer applications include BitTorrent, eMule, and Gnutella. These applications allow
+                        users to share large files, such as videos,
+                        music, and software, by breaking them into smaller pieces and distributing them across the network. Each peer
+                        can download different pieces from multiple sources simultaneously,
+                        resulting in faster download speeds and improved efficiency.
+                
+                
+                    </body2>
+                    <button class="action-button">View Details</button>
+                </div>
+                <!-- TO BE ANNOUNCED ------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
+                <!-- TO BE ANNOUNCED ------------------------------------------------------------------------------------------------------------------------------------------------------------------------>                
+                <div class="widget" style="grid-column: 1 / 3; grid-row:3/5;">
+                    <h3><i class="fas fa-chart-bar"></i> Everyday Examples</h3>
+                    <img src="uploads/Square_Cash_app_logo.svg.png" alt=" cash app logo" width="200"> <img src="uploads/venmo.png" alt="venmo app logo" width="200"> <img src="uploads/paypal.png" alt="paypal app logo" width="200">
+                     
+                    <body>
+                        <div class="circle-graph-3d">
+                        <div class="circle-3d">
+                            <div class="circle-fill-3d" data-percent="60"></div>
+                        </div>
+                        <h1><i class="fas fa-chart-bar"></i> Population usage on using P2P for billing</h1>
+                        <div class="chart-labels">
+                            <span class="label-filled">
+                                <span class="percent-value">60%</span><br> Usage 
+                            </span>
+                        </div>
+                    </body>
+                    <body>
+                        
+                    </body>               
+                    
+                </div>
+                
+                
+                
+
+
+
+                <!-- TO BE ANNOUNCED ------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
+                <!-- <div class="widget" style="grid-column: 2/6 ; grid-row: 5/5;" >
+                    <h3><i class="fas fa-chart-bar"></i> Generation P2P Data</h3>
+                    <canvas id="p2pChart" width="400" height="200"></canvas>
+                    
+                    <script>
+                        // Ensure the chart is initialized when the file transfer tab is loaded
+                        document.addEventListener('DOMContentLoaded', () => {
+                            const ctx = document.getElementById('p2pChart').getContext('2d');
+
+                            // Data for the chart
+                            const data = {
+                                labels: ['2018', '2019', '2020', '2021', '2022', '2023', '2024'],
+                                datasets: [
+                                    {
+                                        label: 'Gen Z',
+                                        data: [6.7, 9.9, 15.9, 20.5, 25.4, 30.6, 35.7],
+                                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                                        borderColor: 'rgba(75, 192, 192, 1)',
+                                        borderWidth: 1
+                                    },
+                                    {
+                                        label: 'Millennial',
+                                        data: [30.1, 35, 45.5, 49.6, 53, 55.6, 57.6],
+                                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                                        borderColor: 'rgba(54, 162, 235, 1)',
+                                        borderWidth: 1
+                                    },
+                                    {
+                                        label: 'Gen X',
+                                        data: [22.1, 25.7, 33.4, 36.4, 38.9, 41, 42.8],
+                                        backgroundColor: 'rgba(255, 206, 86, 0.2)',
+                                        borderColor: 'rgba(255, 206, 86, 1)',
+                                        borderWidth: 1
+                                    },
+                                    {
+                                        label: 'Baby Boomers',
+                                        data: [13.5, 15.3, 21.6, 23.9, 25.2, 25.8, 25.8],
+                                        backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                                        borderColor: 'rgba(153, 102, 255, 1)',
+                                        borderWidth: 1
+                                    }
+                                ]
+                            };
+
+                            // Create the chart
+                            new Chart(ctx, {
+                                type: 'bar',
+                                data: data,
+                                options: {
+                                    responsive: true,
+                                    plugins: {
+                                        legend: {
+                                            position: 'top',
+                                        },
+                                        title: {
+                                            display: true,
+                                            text: 'P2P Generational Forecast'
+                                        }
+                                    }
+                                }
+                            });
+                        });
+                    </script>
+                </div> -->
+
+                <!-- <div class="widget" style="grid-column: 2/6 ; grid-row: 5/5
+                                ;">
+                    <h3> Steps on P2P File Transfer </h3>
+                
+                    <body> 1. Make sure you are connected.
+                        2. Open the P2P file transfer application.
+                        3. Select the files you want to share.
+                        4. Choose the recipient from your contacts or enter their username.
+                        5. Click on the "Send" button.
+                        6. Wait for the recipient to accept the transfer.
+                        7. Once accepted, the transfer will begin.
+                        8. Monitor the progress of the transfer.
+                        9. Once completed, you will receive a notification.
+                        10. The recipient will also receive a notification once the file is successfully transferred.
+                    </body>
+                </div> -->
+
+
+                <!-- <div class="widget" style="grid-column: 3 / 5; grid-row:6/7;">
+                    <h3><i class="fas fa-chart-bar"></i> Everyday Examples</h3>
+                    <canvas id="populationGraph" width="400" height="200"></canvas>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Capital</th>
+                                <th>Population</th>
+                            </tr>
+                        </thead>
+                        <tbody id="data-table-body">
+                            
+                        </tbody>
+                    </table>
+                    <button class="action-button">View Details</button>
+                </div> -->
+               
+            </div>
+        </div>
+    
+        <!--------- Security Tab ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+        <!--------- Security Tab ----------------------------------------------------------------------- ██   ██ ----------------------------------------------------------------------------------------------------------------------------------------------------------->
+        <!--------- Security Tab ----------------------------------------------------------------------- ██   ██ ----------------------------------------------------------------------------------------------------------------------------------------------------------->
+        <!--------- Security Tab ----------------------------------------------------------------------- ███████ ----------------------------------------------------------------------------------------------------------------------------------------------------------->
+        <!--------- Security Tab -----------------------------------------------------------------------      ██ ----------------------------------------------------------------------------------------------------------------------------------------------------------->
+        <!--------- Security Tab -----------------------------------------------------------------------      ██ ----------------------------------------------------------------------------------------------------------------------------------------------------------->
+        <!--------- Security Tab ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+        <div class="tab-content" id="security">
+            <div class="dashboard-container">
+                <!-- TO BE ANNOUNCED ------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
+                <!-- TO BE ANNOUNCED ------------------------------------------------------------------------------------------------------------------------------------------------------------------------>                 
+                <div class="widget" style="grid-column: 1 / 4; grid-row: 1 / 3;">
+                    <div class="widget" style="grid-column: 1 / 3; grid-row: 4 / 3;">
+                    <h2 class="p2p-section-title"><i class="fas fa-question-circle"></i> P2P Frequently Asked Questions</h2>
+                    <div class="p2p-qna-grid">
+                        <div class="p2p-qna-widget" style="grid-column: 1 / 3; grid-row: 1 / 2;">
+                            <div class="p2p-qna-card">
+                                <div class="p2p-qna-card-inner">
+                                    <div class="p2p-qna-card-front">
+                                        <h3 class="p2p-qna-toggle"><span class="p2p-qna-number">1.</span> Decentralization</h3>
+                                    </div>
+                                    <div class="p2p-qna-card-back">
+                                        <p class="p2p-qna-answer">No central authority, users communicate directly.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p2p-qna-widget" style="grid-column: 3 / 5; grid-row: 1 / 2;">
+                            <div class="p2p-qna-card">
+                                <div class="p2p-qna-card-inner">
+                                    <div class="p2p-qna-card-front">
+                                        <h3 class="p2p-qna-toggle"><span class="p2p-qna-number">2.</span> Scalability</h3>
+                                    </div>
+                                    <div class="p2p-qna-card-back">
+                                        <p class="p2p-qna-answer">Easily expands as more users join the network.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p2p-qna-widget" style="grid-column: 1 / 3; grid-row: 2 / 3;">
+                            <div class="p2p-qna-card">
+                                <div class="p2p-qna-card-inner">
+                                    <div class="p2p-qna-card-front">
+                                        <h3 class="p2p-qna-toggle"><span class="p2p-qna-number">3.</span> Privacy</h3>
+                                    </div>
+                                    <div class="p2p-qna-card-back">
+                                        <p class="p2p-qna-answer">Enhances security with encrypted communication.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p2p-qna-widget" style="grid-column: 3 / 5; grid-row: 2 / 3;">
+                            <div class="p2p-qna-card">
+                                <div class="p2p-qna-card-inner">
+                                    <div class="p2p-qna-card-front">
+                                        <h3 class="p2p-qna-toggle"><span class="p2p-qna-number">4.</span> Resource Sharing</h3>
+                                    </div>
+                                    <div class="p2p-qna-card-back">
+                                        <p class="p2p-qna-answer">Users contribute bandwidth and storage.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="widget" style="grid-column: 1 / 3; grid-row: 4 / 9;">
+                                    <div class="p2p-insights-container">
+                                        <h2 class="p2p-insights-title">P2P Network Insights</h2>
+                                        <div class="p2p-insights-content">
+                                            <div class="p2p-insights-section">
+                                                <h3>Advantages of P2P Networks</h3>
+                                                <ul>
+                                                    <li>Decentralization and resilience aspect</li>
+                                                    <li>Easy scalability</li>
+                                                    <li>Efficient resource utilization</li>
+                                                    <li>Cost savings</li>
+                                                    <li>Direct communication and faster content delivery</li>
+                                                    <li>Enhanced privacy and security</li>
+                                                </ul>
+                                            </div>
+                                            <div class="p2p-insights-section">
+                                                <h3>Disadvantages of P2P Networks</h3>
+                                                <ul>
+                                                    <li>Lack of centralized control</li>
+                                                    <li>Network management complexity</li>
+                                                    <li>Dependency on peer availability</li>
+                                                    <li>Performance and efficiency variability</li>
+                                                    <li>Legal risks</li>
+                                                    <li>Security and copyright concerns</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+            </div>
+                <!-- TO BE ANNOUNCED ------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
+                <!-- TO BE ANNOUNCED ------------------------------------------------------------------------------------------------------------------------------------------------------------------------>                 
+                <!-- <div class="widget" style="grid-column: 1 / 3; grid-row: 4 / 9;">
+                    <div class="p2p-insights-container">
+                        <h2 class="p2p-insights-title">P2P Network Insights</h2>
+                        <div class="p2p-insights-content">
+                            <div class="p2p-insights-section">
+                                <h3>Advantages of P2P Networks</h3>
+                                <ul>
+                                    <li>Decentralization and resilience aspect</li>
+                                    <li>Easy scalability</li>
+                                    <li>Efficient resource utilization</li>
+                                    <li>Cost savings</li>
+                                    <li>Direct communication and faster content delivery</li>
+                                    <li>Enhanced privacy and security</li>
+                                </ul>
+                            </div>
+                            <div class="p2p-insights-section">
+                                <h3>Disadvantages of P2P Networks</h3>
+                                <ul>
+                                    <li>Lack of centralized control</li>
+                                    <li>Network management complexity</li>
+                                    <li>Dependency on peer availability</li>
+                                    <li>Performance and efficiency variability</li>
+                                    <li>Legal risks</li>
+                                    <li>Security and copyright concerns</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+                <!-- TO BE ANNOUNCED ------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
+                <!-- TO BE ANNOUNCED ------------------------------------------------------------------------------------------------------------------------------------------------------------------------>                 
+                
+        </div>
+        <!----------- Q&A Tab ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+        <!----------- Q&A Tab --------------------------------------------------------------------------- ███████ ---------------------------------------------------------------------------------------------------------------------------------------------------------->
+        <!----------- Q&A Tab --------------------------------------------------------------------------- ██      ---------------------------------------------------------------------------------------------------------------------------------------------------------->
+        <!----------- Q&A Tab --------------------------------------------------------------------------- ███████ ---------------------------------------------------------------------------------------------------------------------------------------------------------->
+        <!----------- Q&A Tab ---------------------------------------------------------------------------      ██ ---------------------------------------------------------------------------------------------------------------------------------------------------------->
+        <!----------- Q&A Tab --------------------------------------------------------------------------- ███████ ---------------------------------------------------------------------------------------------------------------------------------------------------------->
+        <!----------- Q&A Tab ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+        <div class="tab-content" id="qna">
+            <div class="dashboard-container">
+                <!-- Frequently Asked Questions -->
+                <div class="widget qna-grid-container" style="grid-column: 1 / 4; grid-row: 1 / 4;">
+                    <h2 class="qna-section-title"><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
+                    <div class="qna-grid">
+                        <!-- Top Row (4 widgets) -->
+                        <div class="qna-widget" style="grid-column: 1 / 2; grid-row: 1 / 2;">
+                            <div class="qna-card">
+                                <div class="qna-card-inner">
+                                    <div class="qna-card-front">
+                                        <h3 class="qna-toggle"><span class="qna-number">1.</span> <span class="qna-question">Can I use P2P on a mobile device?</span></h3>
+                                    </div>
+                                    <div class="qna-card-back">
+                                        <p class="qna-answer">Yes, users are able to make transactions and receive payments using their mobile devices.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Widget 2 -->
+                        <div class="qna-widget" style="grid-column: 2 / 3; grid-row: 1 / 2;">
+                            <div class="qna-card">
+                                <div class="qna-card-inner">
+                                    <div class="qna-card-front">
+                                        <h3 class="qna-toggle"><span class="qna-number">2.</span> <span class="qna-question">What are some examples of P2P applications?</span></h3>
+                                    </div>
+                                    <div class="qna-card-back">
+                                        <p class="qna-answer">There are file sharing P2P applications such as BitTorrent, LimeWire, Kazaa, eMule, Gnutella, and Soulseek.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Widget 3 -->
+                        <div class="qna-widget" style="grid-column: 3 / 4; grid-row: 1 / 2;">
+                            <div class="qna-card">
+                                <div class="qna-card-inner">
+                                    <div class="qna-card-front">
+                                        <h3 class="qna-toggle"><span class="qna-number">3.</span> <span class="qna-question">What are some P2P payment apps?</span></h3>
+                                    </div>
+                                    <div class="qna-card-back">
+                                        <p class="qna-answer">Venmo, Cash App, Zelle, PayPal, Google Pay, and Apple Pay.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Widget 4 -->
+                        <div class="qna-widget" style="grid-column: 4 / 5; grid-row: 1 / 2;">
+                            <div class="qna-card">
+                                <div class="qna-card-inner">
+                                    <div class="qna-card-front">
+                                        <h3 class="qna-toggle"><span class="qna-number">4.</span> <span class="qna-question">Why is my P2P app not connecting?</span></h3>
+                                    </div>
+                                    <div class="qna-card-back">
+                                        <p class="qna-answer">If you are connected to the internet, make sure the connection is stable.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Additional widgets can be added here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!----------- Forums Tab ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+        <div class="tab-content" id="forums">
+            <div class="dashboard-container">
+                <!-- Forums Widget -->
+                <div class="widget forums-widget" style="grid-column: 1 / 8; grid-row: 1 /8;">
+                    <h3><i class="fas fa-comments"></i> Forums</h3>
+                    <div class="forums-content">
+
+                        <div class="ask-question-form">
+                            <h3>Ask a Question</h3>
+                            <form id="question-form">
+                                <label for="question-type">Type:</label>
+                                <select id="question-type" name="type" required>
+                                    <option value="General Discussion">General Discussion</option>
+                                    <option value="Technical Support">Technical Support</option>
+                                    <option value="Feature Requests">Feature Requests</option>
+                                    <option value="Bug Reports">Bug Reports</option>
+                                </select>
+                        
+                                <label for="question-title">Title:</label>
+                                <input type="text" id="question-title" name="title" placeholder="Enter your question title" required>
+                        
+                                <label for="question-body">Details:</label>
+                                <textarea id="question-body" name="body" placeholder="Provide more details about your question"
+                                    required></textarea>
+                        
+                                <button type="submit" class="action-button">Post Question</button>
+                            </form>
+                        </div>
+                        
+                        <!-- Add a section to display questions grouped by type -->
+                        <div class="questions-list">
+                            <h3>Questions</h3>
+                            <div id="questions-container">
+                                <h4>General Discussion</h4>
+                                <ul id="general-discussion-questions"></ul>
+                        
+                                <h4>Technical Support</h4>
+                                <ul id="technical-support-questions"></ul>
+                        
+                                <h4>Feature Requests</h4>
+                                <ul id="feature-requests-questions"></ul>
+                        
+                                <h4>Bug Reports</h4>
+                                <ul id="bug-reports-questions"></ul>
+                            </div>
+                        </div>
+                        
+                        <script>
+                            document.getElementById('questions-container').addEventListener('click', function (event) {
+                                if (event.target.classList.contains('answer-btn')) {
+                                    const questionItem = event.target.closest('li');
+                                    const answerForm = document.createElement('div');
+                                    answerForm.innerHTML = `
+                                        <textarea class="answer-input" placeholder="Type your answer..."></textarea>
+                                        <button class="submit-answer-btn action-button">Submit Answer</button>
+                                    `;
+                                    questionItem.appendChild(answerForm);
+                                    event.target.remove(); // Remove the "Answer" button
+                                } else if (event.target.classList.contains('submit-answer-btn')) {
+                                    const answerInput = event.target.previousElementSibling;
+                                    const answerText = answerInput.value.trim();
+                                    if (answerText) {
+                                        const answerItem = document.createElement('p');
+                                        answerItem.classList.add('answer');
+                                        answerItem.textContent = `Answer: ${answerText}`;
+                                        event.target.closest('li').appendChild(answerItem);
+                                        event.target.closest('div').remove(); // Remove the answer form
+                                    }
+                                }
+                            });
+
+                            document.getElementById('question-form').addEventListener('submit', function (event) {
+                                event.preventDefault();
+
+                                // Get the question details
+                                const type = document.getElementById('question-type').value;
+                                const title = document.getElementById('question-title').value;
+                                const body = document.getElementById('question-body').value;
+
+                                // Create a new question element
+                                const questionItem = document.createElement('li');
+                                questionItem.innerHTML = `
+                                    <strong>${title}</strong>
+                                    <p>${body}</p>
+                                    <button class="answer-btn action-button">Answer</button>
+                                `;
+
+                                // Add the question to the appropriate list
+                                const containerId = type.toLowerCase().replace(/ /g, '-') + '-questions';
+                                document.getElementById(containerId).appendChild(questionItem);
+
+                                // Clear the form
+                                document.getElementById('question-type').value = 'General Discussion';
+                                document.getElementById('question-title').value = '';
+                                document.getElementById('question-body').value = '';
+                            });
+                        </script>
+                    </div>
+                    <button class="action-button">Join a Forum</button>
+                </div>
+
+                <!-- Add a dropdown to select the type of question -->
+                
+            </div>
+        </div>
+        <!----------- References Tab ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+        <div class="tab-content" id="references">
+            <div class="dashboard-container">
+                <div class="widget references-widget" style="grid-column: 1 / 8; grid-row: 1 /8;">
+                    <h2><i class="fas fa-book"></i> References</h2>
+                    <div class="references-content">
+                        <ul class="references-list">
+                            <h1><a href="https://developer.mozilla.org/" target="_blank">MDN Web Docs</a></h1>
+                            <h1><a href="https://stackoverflow.com/" target="_blank">Stack Overflow</a></h1>
+                            <h1><a href="https://www.w3schools.com/" target="_blank">W3Schools</a></h1>
+                            <h1><a href="https://css-tricks.com/" target="_blank">CSS-Tricks</a></h1>
+                            <h1><a href="https://reactjs.org/docs/getting-started.html" target="_blank">React Documentation</a></h1>
+                        </ul>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="script.js?v=4"></script>
+    </div>
+</body>
+</html>

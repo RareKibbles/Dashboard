@@ -1,0 +1,45 @@
+{
+  "458349": [
+    {
+      "contactId": "1745644097390-g5hcekosu",
+      "username": "Noah",
+      "status": "offline"
+    },
+    {
+      "contactId": "1745644058397-ol9wcwmqi",
+      "username": "Victor",
+      "status": "offline"
+    },
+    {
+      "contactId": "1745644126105-mbln240mz",
+      "username": "Brian",
+      "status": "offline"
+    },
+    {
+      "contactId": "1745647057040-m0qtqmil0",
+      "username": "test",
+      "status": "offline"
+    },
+    {
+      "contactId": "1745733243590-xvtozmtlq",
+      "username": "emilio",
+      "status": "offline"
+    }
+  ],
+  "1745647057040-m0qtqmil0": [],
+  "1745733243590-xvtozmtlq": [],
+  "1745644126105-mbln240mz": [
+    {
+      "contactId": "458349",
+      "username": "Alec",
+      "status": "offline"
+    }
+  ],
+  "1745644058397-ol9wcwmqi": [
+    {
+      "contactId": "458349",
+      "username": "Alec",
+      "status": "offline"
+    }
+  ]
+}

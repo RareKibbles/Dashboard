@@ -1,0 +1,37 @@
+<!-- login.html -->     
+                                                                                                     <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ByteChat - Login</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <!-- LOGIN MODAL -->
+    <div id="login-modal" class="login-modal">
+        <div class="login-modal-content">
+            <h2>ByteChat Login</h2>
+            <form id="login-form">
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" placeholder="Enter your username" autocomplete="off" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" autocomplete="off" required>
+                </div>
+                <button type="submit" class="action-button">Log In</button>
+            </form>
+            <p id="login-error" class="error-message"></p>
+            <!-- CREATE ACCOUNT BUTTON IN LOGIN MODAL -->
+            <div class="create-account-container">
+                <a href="create-account.html" class="action-button">Create Account</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!-- This is the create account file to make sure you have the neccesary requirements to make this -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account - ByteChat</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <!-- Creating the account modal -->
+    <div id="create-account-modal" class="login-modal">
+        <div class="login-modal-content">
+            <h2>Create ByteChat Account</h2>
+            <form id="create-account-form">
+                <div class="input-group">
+                    <label for="new-username">Username</label>
+                    <input type="text" id="new-username" name="new-username" placeholder="Enter your username" autocomplete="off" required>
+                </div>
+                <div class="input-group">
+                    <label for="new-password">Password</label>
+                    <input type="password" id="new-password" name="new-password" placeholder="Enter your password" autocomplete="off" required>
+                </div>
+                <div class="input-group">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" autocomplete="off" required>
+                </div>
+                <button type="submit" class="action-button">Create Account</button>
+            </form>
+            <p id="create-account-error" class="error-message"></p>
+            <a href="login.html" class="action-button">Back to Login</a>
+        </div>
+    </div>
+    <script>
+        document.getElementById('create-account-form').addEventListener('submit', function(event) {
+            const password = document.getElementById('new-password').value;
+            const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+            if (!passwordRegex.test(password)) {
+                event.preventDefault(); // Prevent form submission
+                alert('Password must be at least 8 characters long, include uppercase, lowercase, a number, and a special character.');
+                alert("Please try again.");
+                return res.status(401).json({ success: false, message: 'Invalid username or password. Please try again' });
+            }
+        });
+    </script>
+</body>
+</html>

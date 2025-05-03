@@ -1,0 +1,4705 @@
+/* frosted-styles.css */
+
+/* ============================================================================================================
+   ============================================================================================================
+   ============================================================= █████████ ====================================
+   ============================================================= ███   ███ ====================================                                                                  
+   ============================================================= ███   ███ ====================================                                                                
+   Section 0: General Styles =================================== ███   ███ ====================================
+   General Styles (Applies Globally) =========================== ███   ███ ====================================
+   ============================================================= ███   ███ ====================================                                                                 
+   ============================================================= ███   ███ ====================================               
+   ============================================================= █████████ ====================================
+   ============================================================================================================
+   ============================================================================================================ */
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    height: 100%;
+    overflow: auto;
+}
+
+/* Dashboard Container */
+.dashboard-container {
+    max-width: 3600px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 600px 675px 600px 525px;
+    gap: 80px;
+    padding: 70px;
+    margin: 0 auto;
+    transition: filter 0.5s ease-in-out;
+    position: relative;
+    z-index: 1;
+    zoom: 0.2;
+    /* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------Added to scale the tab bar to 20% */
+}
+
+body {
+    background: linear-gradient(145deg, #606060, #404040, #606060, #404040);
+    /* Frosted gradient */
+    color: #E0E0E0;
+    font-family: 'Orbitron', 'Arial', sans-serif;
+    text-shadow: 0 0 10px #1d4ed8cc;
+    margin: 0;
+    min-height: 100vh;
+    transition: background 0.1s ease;
+    overflow: auto;
+    /* Already added for dashboard scaling */
+}
+
+/* FROSTED THEME */
+body.light-theme {
+    background: linear-gradient(to top right, #D3D3D3, #FFFFFF);
+    color: #333;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Logo */
+.logo {
+    display: block;
+    margin: 45px auto;
+    width: 225px;
+    height: auto;
+    border-radius: 30px;
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #1d4ed8b3;
+    position: relative;
+    zoom: 0.2;
+    /* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------Added to scale the tab bar to 20% */
+}
+
+.logo::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(145deg, rgba(192, 192, 192, 0.3), rgba(160, 160, 160, 0.3));
+    border-radius: 22.5px;
+    z-index: 1;
+}
+
+/* Dashboard Heading */
+.dashboard-heading {
+    text-align: center;
+    font-size: 5.25em;
+    color: #E0E0E0;
+    background: linear-gradient(145deg, #B0B0B0, #808080);
+    border-radius: 30px;
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #1d4ed8b3;
+    padding: 22.5px 45px;
+    margin: 0 auto 45px;
+    width: fit-content;
+    position: relative;
+    text-shadow: 1.5px 1.5px 4.5px rgba(0, 0, 0, 0.3);
+    animation: glow 4s infinite ease-in-out;
+    zoom: 0.2;
+    /* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------Added to scale the tab bar to 20% */
+}
+
+.dashboard-heading::after {
+    content: "ByteChat Dashboard";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    color: rgba(255, 255, 255, 0.2);
+    transform: scaleY(-1);
+    opacity: 0.3;
+    text-shadow: 0 0 15px rgba(29, 78, 216, 0.4);
+}
+
+/* Tab Content Container */
+.tab-content-container {
+    position: relative;
+    width: 100%;
+    max-width: 3600px;
+    margin: 0 auto;
+    overflow: visible !important;
+    /* Already adjusted for dashboard scaling */
+}
+
+.tab-content {
+    display: none;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.tab-content.active {
+    display: block;
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Tab Bar Styling */
+.tab-bar {
+    display: flex;
+    justify-content: center;
+    gap: 22.5px;
+    margin: 0 auto 45px;
+    width: fit-content;
+    padding: 22.5px 45px;
+    background: linear-gradient(145deg, #B0B0B0, #808080);
+    /* Frosted gradient */
+    border-radius: 30px;
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #1d4ed8b3;
+    zoom: 0.2;
+    /* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------Added to scale the tab bar to 20% */
+}
+
+body.light-theme .tab-bar {
+    background: linear-gradient(145deg, #D0D0D0, #A0A0A0);
+    border: 1.5px solid rgba(0, 0, 0, 0.1);
+    box-shadow:
+        18px 18px 36px rgba(0, 0, 0, 0.2),
+        -18px -18px 36px rgba(255, 255, 255, 0.5),
+        inset 6px 6px 15px rgba(0, 0, 0, 0.15),
+        inset -6px -6px 15px rgba(255, 255, 255, 0.4),
+        0 0 60px rgba(0, 0, 0, 0.3);
+}
+
+.tab {
+    background: linear-gradient(145deg, #606060, #404040);
+    /* Frosted gradient */
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #1d4ed8b3;
+    border: none;
+    border-radius: 15px;
+    padding: 15px 30px;
+    color: #E0E0E0;
+    font-family: 'Orbitron', 'Arial', sans-serif;
+    font-size: 21px;
+    min-width: 150px;
+    white-space: nowrap;
+    cursor: pointer;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7.5px;
+    text-shadow: 0 0 18px rgba(30, 58, 138, 0.9);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    animation: glow 4s infinite ease-in-out;
+}
+
+.tab::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
+    border-radius: 15px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.tab:hover {
+    box-shadow:
+        4.5px 4.5px 27px #1e3a8a,
+        -4.5px -4.5px 27px #ffffff66;
+    transform: translateY(3px);
+}
+
+.tab.active {
+    background: linear-gradient(145deg, #1E3A8A, #162E6F);
+    box-shadow:
+        7.5px 7.5px 15px rgba(0, 0, 0, 0.3),
+        -7.5px -7.5px 15px rgba(255, 255, 255, 0.2),
+        0 0 22.5px rgba(29, 78, 216, 0.9);
+    animation: pop 0.4s ease-out;
+}
+
+body.light-theme .tab {
+    background: linear-gradient(145deg, #9ca3af, #6b7280);
+    color: #333;
+    text-shadow: 0 0 7.5px rgba(0, 0, 0, 0.3);
+}
+
+body.light-theme .tab:hover {
+    box-shadow:
+        4.5px 4.5px 27px rgba(0, 0, 0, 0.3),
+        -4.5px -4.5px 27px rgba(255, 255, 255, 0.5);
+}
+
+body.light-theme .tab.active {
+    background: linear-gradient(145deg, #3b82f6, #2563eb);
+    box-shadow:
+        7.5px 7.5px 15px rgba(0, 0, 0, 0.3),
+        -7.5px -7.5px 15px rgba(255, 255, 255, 0.2);
+    animation: pop 0.4s ease-out;
+}
+
+/* Animations (Used Globally) */
+@keyframes gloss {
+    0% {
+        opacity: 0.7;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0.9;
+        transform: translateY(5px);
+    }
+}
+
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 10px rgba(29, 78, 216, 0.8);
+    }
+
+    50% {
+        text-shadow: 0 0 25px rgba(29, 78, 216, 1.0);
+    }
+
+    100% {
+        text-shadow: 0 0 10px rgba(29, 78, 216, 0.8);
+    }
+}
+
+@keyframes breathe {
+    0% {
+        transform: translateY(0);
+    }
+
+    25% {
+        transform: translateY(-2px);
+    }
+
+    50% {
+        transform: translateY(-4px);
+    }
+
+    75% {
+        transform: translateY(-2px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes bubbleUp {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes bullet-glow {
+    0% {
+        box-shadow: 0 0 6px rgba(130, 164, 243, 0.6), 0 0 12px rgba(130, 164, 243, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 0 12px rgba(130, 164, 243, 1), 0 0 24px rgba(130, 164, 243, 0.8);
+    }
+
+    100% {
+        box-shadow: 0 0 6px rgba(130, 164, 243, 0.6), 0 0 12px rgba(130, 164, 243, 0.4);
+    }
+}
+
+/* Pop Animation Keyframes */
+@keyframes pop {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+        /* Slightly scale up for the "pop" effect */
+    }
+
+    75% {
+        transform: scale(0.95);
+        /* Slight bounce back */
+    }
+
+    100% {
+        transform: scale(1);
+        /* Return to normal size */
+    }
+}
+
+/* Widget Pop Animation Keyframes */
+@keyframes widget-pop {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    50% {
+        opacity: 0.7;
+        transform: scale(1.05);
+        /* Slightly overshoot for the "pop" effect */
+    }
+
+    75% {
+        transform: scale(0.95);
+        /* Slight bounce back */
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+        /* Settle at normal size */
+    }
+}
+
+@keyframes barFill {
+    0% {
+        height: 0;
+    }
+
+    100% {
+        height: var(--bar-height);
+    }
+}
+
+/* Widget */
+.widget {
+    background: linear-gradient(145deg, #B0B0B0, #808080);
+    /* Frosted gradient */
+    border-radius: 80px;
+    border: 1.5px solid #ffffff33;
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #1d4ed8b3;
+    padding: 40px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, opacity 0.5s ease-in-out;
+    overflow: auto;
+    opacity: 0;
+    transform: scale(0.8);
+    will-change: transform, opacity;
+    justify-self: center;
+    align-self: center;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+/* Ensure all widgets (except ByteChat Live Messaging) use flexbox to position buttons at the bottom */
+.widget:not([style*="grid-column: 2 / 6"][style*="grid-row: 3 / 5"]) {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+/* Align single buttons to the bottom-left in widgets */
+.widget:not([style*="grid-column: 2 / 6"][style*="grid-row: 3 / 5"]) .action-button {
+    margin-top: auto;
+    align-self: flex-start;
+}
+
+/* Hover effect for all widgets */
+.widget:hover {
+    box-shadow:
+        9px 9px 27px #00000080,
+        -9px -9px 27px #ffffff40,
+        inset 4.5px 4.5px 12px #0000004d,
+        inset -4.5px -4.5px 12px #ffffff66,
+        0 0 120px #4678ff,
+        /* Larger, brighter glow */
+        0 0 30px #4678ff;
+    /* Secondary, more concentrated glow */
+    opacity: 0.98;
+    z-index: 2;
+    /* Bring the widget forward on hover */
+}
+
+/* Special handling for chat window to prevent opacity and filter changes */
+.widget.chat-window:hover {
+    opacity: 1 !important;
+    filter: none !important;
+}
+
+/* Widget Pop Animation for Active Tab */
+.tab-content.active .widget {
+    animation: widget-pop 0.5s ease-out forwards;
+}
+
+body.light-theme .widget {
+    background: linear-gradient(145deg, #D0D0D0, #A0A0A0);
+    box-shadow:
+        18px 18px 36px rgba(0, 0, 0, 0.2),
+        -18px -18px 36px rgba(255, 255, 255, 0.5),
+        inset 6px 6px 15px rgba(0, 0, 0, 0.15),
+        inset -6px -6px 15px rgba(255, 255, 255, 0.4),
+        0 0 60px rgba(0, 0, 0, 0.3);
+    border: 1.5px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Stagger the animation for each widget */
+.tab-content.active .widget:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.tab-content.active .widget:nth-child(2) {
+    animation-delay: 0.15s;
+}
+
+.tab-content.active .widget:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.tab-content.active .widget:nth-child(4) {
+    animation-delay: 0.25s;
+}
+
+.tab-content.active .widget:nth-child(5) {
+    animation-delay: 0.3s;
+}
+
+.tab-content.active .widget:nth-child(6) {
+    animation-delay: 0.35s;
+}
+
+.tab-content.active .widget:nth-child(7) {
+    animation-delay: 0.4s;
+}
+
+.tab-content.active .widget:nth-child(8) {
+    animation-delay: 0.45s;
+}
+
+/* Widget Title */
+.widget h3 {
+    margin-bottom: 22.5px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    text-shadow: 1.5px 1.5px 4.5px rgba(0, 0, 0, 0.3);
+    font-size: 2.7em;
+    animation: glow 4s infinite ease-in-out;
+    align-self: flex-start;
+    margin-top: 0;
+}
+
+/* Widget Paragraphs */
+.widget p {
+    margin: 12px 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-shadow: 0 0 18px rgba(29, 78, 216, 0.9);
+    font-size: 1.8em;
+    animation:
+        glow 4s infinite ease-in-out,
+        breathe 2.5s infinite ease-in-out;
+}
+
+/* Action Buttons */
+.action-button {
+    background: linear-gradient(145deg, #606060, #404040);
+    /* Frosted gradient */
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #0e2565b3;
+    border: none;
+    border-radius: 15px;
+    padding: 15px 22.5px;
+    color: #E0E0E0;
+    font-family: 'Orbitron', 'Arial', sans-serif;
+    font-size: 18px;
+    min-width: 135px;
+    white-space: nowrap;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7.5px;
+    text-shadow: 0 0 18px rgba(30, 58, 138, 0.9);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    animation: glow 4s infinite ease-in-out;
+    margin: 7.5px;
+}
+
+.action-button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #ffffff4d, #ffffff1a);
+    border-radius: 15px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.action-button:hover {
+    box-shadow:
+        4.5px 4.5px 27px #1e3a8a,
+        -4.5px -4.5px 27px #ffffff66;
+    transform: translateY(3px);
+}
+
+.action-button:active {
+    transform: translateY(3px) scale(0.98);
+    box-shadow:
+        3px 3px 12px #00000080,
+        inset 3px 3px 7.5px #0000004d,
+        inset -3px -3px 7.5px #ffffff33;
+}
+
+/* Toast Notification (Used Across Tabs) ???????????????????????????????????????????????????????????????????????????*/
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: linear-gradient(145deg, #1E3A8A, #162E6F);
+    color: #E0E0E0;
+    padding: 15px 25px;
+    border-radius: 15px;
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    box-shadow:
+        5px 5px 15px rgba(0, 0, 0, 0.4),
+        -5px -5px 15px rgba(255, 255, 255, 0.15),
+        inset 2px 2px 5px rgba(0, 0, 0, 0.25),
+        inset -2px -2px 5px rgba(255, 255, 255, 0.35),
+        0 0 20px rgba(29, 78, 216, 0.7);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 1003;
+    font-family: 'Orbitron', 'Arial', sans-serif;
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =============================================================================================================
+   =================================================================== ████ ====================================
+   =================================================================== ████ ====================================
+   =================================================================== ████ ====================================
+   =================================================================== ████ ====================================
+   Section 1: Dashboard Tab ========================================== ████ ====================================
+   Dashboard Tab Styles ============================================== ████ ====================================
+   =================================================================== ████ ====================================
+   =================================================================== ████ ====================================
+   =================================================================== ████ ====================================
+   ============================================================================================================= */
+
+/*DASHBOARD TAB WIDGET IN ORDER*/
+/* Quick Access Tools Widget In (DashBoard Tab) ----------------------------------------------------------------------------------------------------------------------*/
+.widget[style*="grid-column: 1 / 2"][style*="grid-row: 1 / 2"] h3 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.widget[style*="grid-column: 1 / 2"][style*="grid-row: 1 / 2"] p {
+    font-size: 1em;
+    margin: 4px 0;
+    animation: glow 4s infinite ease-in-out;
+}
+
+.widget[style*="grid-column: 1 / 2"][style*="grid-row: 1 / 2"] .action-button {
+    margin-top: auto;
+    margin-bottom: 10px;
+    align-self: flex-start;
+}
+
+/* Quick Access Tools Widget In (DashBoard Tab) ----------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* P2P Activity Mini Widget In DashBoard Tab--------------------------------------------------------------------------------------------------------------------------*/
+/* P2P Activity Preview Widget */
+.p2p-preview .transaction-log {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    max-height: 100%;
+    min-height: 0;
+}
+
+.p2p-preview .transaction-log ul#p2p-preview-transaction-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 100%;
+    overflow-y: auto;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    scrollbar-width: auto;
+    min-height: 0;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+}
+
+.p2p-preview .transaction-log ul#p2p-preview-transaction-list li {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    background: linear-gradient(145deg, #606060, #808080);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2), -5px -5px 10px rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.p2p-preview .transaction-log ul#p2p-preview-transaction-list li.sent .transaction-line-1 {
+    color: #ffffff;
+    /* White for sent */
+    font-weight: bold;
+}
+
+.p2p-preview .transaction-log ul#p2p-preview-transaction-list li.requested .transaction-line-1 {
+    color: #ffeb3b;
+    /* Yellow for requested */
+    font-weight: bold;
+}
+
+.p2p-preview .transaction-log ul#p2p-preview-transaction-list li .transaction-line-2 {
+    color: #b0b0b0;
+    font-size: 0.9em;
+}
+
+/* P2P Activity Mini Widget In (DashBoard Tab) -----------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* TO BE ANOUNCED In (DashBoard Tab) ---------------------------------------------------------------------------------------------------------------------------------*/
+
+
+
+
+
+
+
+
+
+/* TO BE ANOUNCED In (DashBoard Tab) ---------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* Bot Chat In (DashBoard Tab) ---------------------------------------------------------------------------------------------------------------------------------------*/
+/* Bot Chat Widget Outer Window (Single Outer Layer) */
+.bot-chat-window {
+    filter: none !important;
+    opacity: 1 !important;
+    transition: filter 0.3s ease;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: linear-gradient(145deg, #808080, #606060);
+    /* Frosted gradient */
+    border-radius: 80px;
+    /* Matches Q&A widget */
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #1d4ed8b3;
+    padding: 40px;
+    /* Matches Q&A widget's outer padding */
+    border: 2px solid rgba(29, 78, 216, 0.5);
+    /* Blue glowing border for divider effect */
+    overflow: auto;
+    z-index: 2;
+    min-width: 0;
+    min-height: 0;
+    box-sizing: border-box;
+    display: flex;
+    /* Ensure the inner container stretches properly */
+    flex-direction: column;
+}
+
+.bot-chat-window:hover,
+.bot-chat-window:focus-within {
+    filter: none !important;
+    opacity: 1 !important;
+    box-shadow:
+        inset 5px 5px 10px rgba(0, 0, 0, 0.3),
+        inset -5px -5px 10px rgba(255, 255, 255, 0.2),
+        0 0 60px rgba(70, 120, 255, 1);
+    /* Enhanced glow on hover */
+}
+
+
+/* Inner Container for Chat */
+.bot-chat-window .bot-chat-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    /* Ensure it takes up available space */
+    height: 100%;
+    max-height: calc(100% - 60px);
+    background: linear-gradient(145deg, #808080, #606060);
+    /* Frosted gradient */
+    border-radius: 50px;
+    /* Matches Q&A widget */
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #0e2565b3;
+    padding: 30px;
+    /* Matches Q&A widget */
+}
+
+/* Style the Title Inside the Inner Container */
+.bot-chat-container h3 {
+    margin: 0 0 20px 0;
+    padding: 0;
+    color: #E0E0E0;
+    font-family: 'Orbitron', 'Arial', sans-serif;
+    font-size: 3em;
+    /* Matches Q&A widget */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+/* Chat Box Background and Height */
+.bot-chat-window .bot-chat-box {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    padding: 45px;
+    /* Matches Q&A widget */
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 200px;
+    /* Adjusted for smaller widget size */
+    max-height: 325px;
+    /* Matches original Dashboard widget max-height */
+}
+
+/* Override text-shadow for chat messages to make text sharper */
+.bot-chat-window .message .content,
+.bot-chat-window .message .timestamp {
+    text-shadow: none !important;
+}
+
+/* Username and Content Styling */
+.bot-chat-window .message .username,
+.bot-chat-window .message .content {
+    display: inline-block;
+}
+
+.bot-chat-window .message .username {
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.bot-chat-window .message .content {
+    font-size: 1em;
+}
+
+/* Timestamp Styling */
+.bot-chat-window .message .timestamp {
+    font-size: 0.8em;
+    color: whitesmoke;
+    align-self: flex-end;
+    margin-top: 20px;
+    /* Matches Q&A widget */
+}
+
+/* Align Username for User Messages */
+.bot-chat-window .bot-chat-box .message.user .username {
+    align-self: flex-end;
+    text-align: right;
+    margin-right: 5px;
+}
+
+/* BOT CHAT OUTER OF (TYPE YOUR MESSAGE AREA IN (DASHBOARD TAB) Input Field */
+.bot-chat-window .bot-input-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(145deg, #808080, #606060);
+    /* Matches Q&A widget */
+    border-radius: 25px;
+    padding: 10px 15px;
+    /* Matches Q&A widget */
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #0e2565b3;
+    margin-top: 10px;
+}
+
+/* BOT CHAT (TYPE YOUR MESSAGE AREA IN (DASHBOARD TAB) Input Field */
+.bot-chat-window .bot-input-container input {
+    flex: 1;
+    background: linear-gradient(145deg, #606060, #404040);
+    /* Matches Q&A widget */
+    border: none;
+    border-radius: 20px;
+    padding: 10px 15px;
+    /* Matches Q&A widget */
+    color: #E0E0E0;
+    font-family: 'Orbitron', 'Arial', sans-serif;
+    font-size: 1em;
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #0e2565b3;
+    transition: box-shadow 0.2s;
+}
+
+.bot-chat-window .bot-input-container input:focus {
+    outline: none;
+    box-shadow:
+        inset 2px 2px 5px rgba(0, 0, 0, 0.4),
+        inset -2px -2px 5px rgba(255, 255, 255, 0.15),
+        0 0 20px rgba(29, 78, 216, 0.7);
+}
+
+/* Placeholder Styling */
+.bot-chat-window .bot-input-container input::placeholder {
+    color: #A0A0A0;
+    opacity: 0.8;
+    font-family: 'Orbitron', 'Arial', sans-serif;
+}
+
+/* First Message Animation */
+.bot-chat-window .bot-chat-box .message:first-child {
+    animation: bubbleUp 0.5s ease-out forwards;
+}
+
+/* Bot Chat In (DashBoard Tab) ---------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* TO BE ANOUNCED In (DashBoard Tab) ---------------------------------------------------------------------------------------------------------------------------------*/
+
+
+
+
+
+
+
+
+
+/* TO BE ANOUNCED In (DashBoard Tab) ---------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* GENERATION TABS PIE CHART IN (DashBoard Tab) ----------------------------------------------------------------------------------------------------------------------*/
+/* Widget Container */
+.circle-graph-3d {
+    position: relative;
+    width: 290px;
+    height: 1450px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    perspective: 10000px;
+}
+
+/* Skeuomorphic Base Disc */
+.circle-3d {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 60%;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.5) 0%, rgba(255, 255, 255, 0.3) 100%);
+    transform: rotateX(50deg);
+    transform-style: preserve-3d;
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #0e2565b3;
+    /* inner subtle depth */
+}
+
+/* Glowing 3D Filled Segment (Blue) */
+.circle-fill-3d {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: conic-gradient(#1E3A8A 0% var(--percent),
+            transparent var(--percent) 100%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, #404040 100%);
+    /* gray area with lighting effect */
+    transform: translateZ(40px);
+    clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 0%);
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* CIRCLE PERCENT COLOR GREY?????*/
+.circle-fill-3d::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 100%);
+    pointer-events: none;
+}
+
+/* Label Area */
+.chart-labels {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 11.6px;
+}
+
+/* Glowing Percentage Label */
+.label-filled {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3.35em;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center;
+    margin-top: 20px;
+    animation: glow 4s infinite ease-in-out;
+}
+
+/* GENERATION TABS PIE CHART IN (DashBoard Tab) ----------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* TO BE ANOUNCED In (DashBoard Tab) ---------------------------------------------------------------------------------------------------------------------------------*/
+
+
+
+
+
+
+
+
+
+/* TO BE ANOUNCED In (DashBoard Tab) ---------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* FAQ Preview Mini Widget In (DashBoard Tab) ------------------------------------------------------------------------------------------------------------------------*/
+/* FAQ Preview Widget */
+.faq-preview .faq-preview-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: calc(100% - 60px);
+    /* Account for h3 and button */
+    overflow: hidden;
+}
+
+.faq-preview .qna-card {
+    perspective: 1000px;
+    height: 120px;
+    /* Fixed height to fit within widget */
+    position: relative;
+    overflow: hidden;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.faq-preview .qna-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s ease;
+    transform-style: preserve-3d;
+    background-color: darkblue;
+}
+
+.faq-preview .qna-card.flipped .qna-card-inner {
+    transform: rotateY(180deg);
+    background-color: darkblue;
+}
+
+/* Front/Back Backround Color*/
+.faq-preview .qna-card-front,
+.faq-preview .qna-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    background-color: linear-gradient(145deg #404040, #606060, #404040);
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #0e2565b3;
+}
+
+/* Front Card Word Color*/
+.faq-preview .qna-toggle {
+    margin: 0;
+    font-size: 1.2em;
+    cursor: pointer;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.faq-preview .qna-number {
+    margin-right: 5px;
+    color: #ffffff;
+}
+
+/* Back Card Word Color*/
+.faq-preview .qna-answer {
+    margin: 0;
+    font-size: 0.9em;
+    color: white;
+    font-weight: bold;
+}
+
+.faq-preview .qna-card:hover .qna-toggle,
+.faq-preview .qna-card:hover .qna-answer {
+    color: #1E3A8A;
+    /* Blue text color on hover */
+}
+
+/* FAQ Preview Widget In (DashBoard Tab) -----------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* TO BE ANOUNCED In (DashBoard Tab) ---------------------------------------------------------------------------------------------------------------------------------*/
+
+
+
+
+
+
+
+
+
+/* TO BE ANOUNCED In (DashBoard Tab) ---------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* TO BE ANOUNCED In (DashBoard Tab) ---------------------------------------------------------------------------------------------------------------------------------*/
+
+
+
+
+
+
+
+
+
+/* TO BE ANOUNCED In (DashBoard Tab) --------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* Need More Help? Widget In (DashBoard Tab) ------------------------------------------------------------------------------------------------------------------------*/
+.widget[style*="grid-column: 1 / 2"][style*="grid-row: 4 / 5"] {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    padding-bottom: 30px;
+}
+
+/* Container for buttons in Need More Help? widget */
+.widget[style*="grid-column: 1 / 2"][style*="grid-row: 4 / 5"] .button-container {
+    margin-top: auto;
+    text-align: center;
+}
+
+/* Need More Help? Widget In (DashBoard Tab) -------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* BYTE CHAT LIVE MESSEGING WIDGET (DashBoard Tab) -------------------------------------------------------------------------------------------------------------------*/
+/* Blur the dashboard when the overlay is active */
+.dashboard-container.blurred {
+    transition: filter 0.3s ease;
+}
+
+.dashboard-container.blurred>* {
+    filter: blur(5px);
+}
+
+.dashboard-container.blurred .chat-window,
+.dashboard-container.blurred .bot-chat-window {
+    filter: none !important;
+    opacity: 1 !important;
+}
+
+/* Overlay styling (Used with Chat Expansion in Dashboard Tab) */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    z-index: 999;
+    display: none;
+}
+
+.overlay.active {
+    display: block;
+}
+
+/* Placeholder for chat window when expanded */
+.chat-placeholder {
+    display: block;
+}
+
+/* ByteChat Live Messaging Around (ByteChat Live Messaging Widget) */
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-height: calc(100% - 60px);
+    background: linear-gradient(145deg, #808080, #606060);
+    /* Frosted gradient */
+    border-radius: 50px;
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #0e2565b3;
+    padding: 30px;
+}
+
+.chat-container h3 {
+    margin-bottom: 15px;
+    padding-bottom: 7.5px;
+    border-bottom: 1.5px solid rgba(255, 255, 255, 0.1);
+    font-size: 2.25em;
+    animation: glow 4s infinite ease-in-out;
+    align-self: flex-start;
+    margin-top: 0;
+}
+
+/*ByteChat Live Messaging BackGround ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------THE TABS IN THE BYTECHAT WIDGET AREA ---*/
+#chat-box {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    padding: 45px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 55px;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column-reverse;
+    min-height: 300px;
+    max-height: 100%;
+}
+
+/* ByteChat Live Messaging Bot Message Grey Bubble */
+.message {
+    max-width: 70%;
+    padding: 12px 20px;
+    border-radius: 25px;
+    word-wrap: break-word;
+    font-size: 1em !important;
+    line-height: 1.4;
+    margin: 10px 0;
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #1d4ed8b3;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    filter: none !important;
+    opacity: 1 !important;
+}
+
+/* ByteChat Live Messaging All Bubble Top Shade /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+.message::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
+    border-radius: 25px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Override text-shadow for chat messages to make text sharper */
+.message .content,
+.message .timestamp {
+    text-shadow: none !important;
+}
+
+/* Specific styling for the typing indicator */
+.message.typing-indicator {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    width: fit-content;
+    max-width: 50%;
+    padding: 8px 15px;
+    background: linear-gradient(145deg, #606060, #404040);
+    /* Frosted gradient */
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #0e2565b3;
+}
+
+/* Ensure the content inside the typing indicator doesn't force it to stretch */
+.message.typing-indicator .content {
+    white-space: nowrap;
+}
+
+/* Adjust the avatar spacing within the typing indicator */
+.message.typing-indicator .avatar {
+    margin-right: 8px;
+}
+
+/* (ALL) Message BLUE BUBBLES BUT NOT THE BOT CHAT IN THE (QNA - TAB)  */
+/*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+.message.user {
+    align-self: flex-end;
+    background: linear-gradient(145deg, #1E3A8A, #162E6F);
+    color: #E0E0E0;
+    max-width: 80%;
+}
+
+.message .avatar {
+    font-size: 1.2em;
+    margin-right: 10px;
+    align-self: flex-start;
+}
+
+.message .content {
+    flex: 1;
+}
+
+.message .timestamp {
+    font-size: 0.7em;
+    color: #BBB;
+    margin-top: 5px;
+}
+
+.message .status {
+    font-size: 0.6em;
+    color: #0F0;
+    margin-top: 2px;
+}
+
+#chat-box .message:first-child {
+    animation: bubbleUp 0.5s ease-out forwards;
+}
+
+.message.user .avatar {
+    order: 2;
+    margin-left: 10px;
+    margin-right: 0;
+}
+
+.message.user .avatar i {
+    transform: rotate(180deg);
+}
+
+.message.bot {
+    align-self: flex-start;
+    background: linear-gradient(145deg, #606060, #404040);
+    color: #E0E0E0;
+}
+
+.message-actions {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    margin-top: 5px;
+}
+
+.message-actions .action-button {
+    padding: 4px 8px;
+    font-size: 0.75em;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(145deg, #808080, #606060);
+    /* Frosted gradient */
+    border-radius: 25px;
+    padding: 10px 15px;
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #0e2565b3;
+    margin-top: 10px;
+}
+
+/* ByteChat Live Messaging Type Your Message Bar */
+#user-input {
+    flex: 1;
+    background: linear-gradient(145deg, #606060, #404040);
+    /* Frosted gradient */
+    border: none;
+    border-radius: 20px;
+    padding: 10px 15px;
+    color: #E0E0E0;
+    font-family: 'Orbitron', 'Arial', sans-serif;
+    font-size: 1em;
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #0e2565b3;
+}
+
+#user-input:focus {
+    outline: none;
+    box-shadow:
+        inset 2px 2px 5px rgba(0, 0, 0, 0.4),
+        inset -2px -2px 5px rgba(255, 255, 257, 0.15),
+        0 0 20px rgba(29, 78, 216, 0.7);
+    filter: none !important;
+    opacity: 1 !important;
+}
+
+/* Style the placeholder text */
+#user-input::placeholder {
+    color: #A0A0A0;
+    opacity: 0.8;
+    font-family: 'Orbitron', 'Arial', sans-serif;
+}
+
+.chat-window {
+    filter: none !important;
+    opacity: 1 !important;
+    transition: filter 0.3s ease;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: linear-gradient(145deg, #808080, #606060);
+    /* Frosted gradient */
+    border-radius: 80px;
+    box-shadow:
+        inset 5px 5px 10px rgba(0, 0, 0, 0.3),
+        inset -5px -5px 10px rgba(255, 255, 255, 0.2),
+        0 0 30px rgba(29, 78, 216, 0.7);
+    padding: 40px;
+    overflow: auto;
+    z-index: 2;
+    min-width: 0;
+    min-height: 0;
+}
+
+.chat-window:hover,
+.chat-window:focus-within {
+    filter: none !important;
+    opacity: 1 !important;
+}
+
+/* Expand button styling */
+.expand-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 6px 10px;
+    font-size: 0.85em;
+    z-index: 1002;
+    background: linear-gradient(145deg, #606060, #404040);
+    /* Frosted gradient */
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #0e2565b3;
+    border: none;
+    border-radius: 10px;
+    color: #E0E0E0;
+    font-family: 'Orbitron', 'Arial', sans-serif;
+    text-shadow: 0 0 12px rgba(30, 58, 138, 0.9);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    animation: glow 4s infinite ease-in-out;
+    cursor: pointer;
+}
+
+/* Close button styling */
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 8px 12px;
+    font-size: 1em;
+    background: linear-gradient(145deg, #606060, #404040);
+    /* Frosted gradient */
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #0e2565b3;
+    border: none;
+    border-radius: 10px;
+    color: #E0E0E0;
+    font-family: 'Orbitron', 'Arial', sans-serif;
+    text-shadow: 0 0 12px rgba(30, 58, 138, 0.9);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    animation: glow 4s infinite ease-in-out;
+    display: none;
+    z-index: 1002;
+    cursor: pointer;
+}
+
+.close-button:hover {
+    box-shadow:
+        3px 3px 18px rgba(30, 58, 138, 1.0),
+        -3px -3px 18px rgba(255, 255, 255, 0.4);
+    transform: translateY(2px);
+}
+
+/* Show close button when chat is expanded */
+.chat-window.chat-expanded .close-button {
+    display: block;
+}
+
+/* Hide expand button when chat is expanded */
+.chat-window.chat-expanded .expand-button {
+    display: none;
+}
+
+/* Expanded chat styling */
+.chat-window.chat-expanded {
+    position: fixed;
+    top: 20%;
+    /* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------Added to scale the expand message widget to 20% */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 100vh;
+    max-width: 3200px;
+    max-height: 1920px;
+    z-index: 1001;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #0e2565b3;
+    background: linear-gradient(to top right, #4A4A4A, #D3D3D3);
+    filter: none !important;
+    zoom: 0.2;
+    /* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------Added to scale the tab bar to 20% */
+}
+
+.chat-window.chat-expanded .chat-container {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-window.chat-expanded #chat-box {
+    min-height: 400px;
+    max-height: calc(100% - 120px);
+    overflow-y: auto;
+}
+
+.chat-window.chat-expanded .expand-button i::before {
+    content: "\f066";
+}
+
+#emoji-picker {
+    position: absolute;
+    bottom: 105px;
+    left: 15px;
+    z-index: 1000;
+    background: linear-gradient(225deg, #606060, #B0B0B0);
+    /* Frosted gradient */
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    border-radius: 37.5px;
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #0e2565b3;
+    padding: 22.5px;
+    max-height: 450px;
+    overflow-y: auto;
+    display: none;
+    flex-direction: column;
+}
+
+.emoji-close-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: linear-gradient(145deg, #606060, #404040);
+    /* Frosted gradient */
+    border: none;
+    border-radius: 10px;
+    color: #E0E0E0;
+    font-size: 12px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #0e2565b3;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    animation: glow 4s infinite ease-in-out;
+}
+
+.emoji-close-btn:hover {
+    box-shadow:
+        3px 3px 18px rgba(30, 58, 138, 1.0),
+        -3px -3px 18px rgba(255, 255, 255, 0.4);
+    transform: translateY(2px);
+}
+
+.emoji-category-container {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    background: linear-gradient(225deg, #606060, #B0B0B0);
+    /* Frosted gradient */
+    border-radius: 15px;
+    padding: 5px;
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #0e2565b3;
+}
+
+.emoji-tab {
+    background: linear-gradient(145deg, #606060, #404040);
+    /* Frosted gradient */
+    border: none;
+    border-radius: 10px;
+    padding: 5px 10px;
+    color: #E0E0E0;
+    font-family: 'Orbitron', 'Arial', sans-serif;
+    cursor: pointer;
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #0e2565b3;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    animation: glow 4s infinite ease-in-out;
+}
+
+.emoji-tab:hover {
+    box-shadow:
+        3px 3px 18px rgba(30, 58, 138, 1.0),
+        -3px -3px 18px rgba(255, 255, 255, 0.4);
+    transform: translateY(2px);
+}
+
+.emoji-tab.active {
+    background: linear-gradient(145deg, #1E3A8A, #162E6F);
+    box-shadow:
+        5px 5px 10px rgba(0, 0, 0, 0.3),
+        -5px -5px 10px rgba(255, 255, 255, 0.2),
+        0 0 15px rgba(29, 78, 216, 0.9);
+}
+
+.emoji-category {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    background: linear-gradient(225deg, #606060, #B0B0B0);
+    /* Frosted gradient */
+    border-radius: 15px;
+    padding: 10px;
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #0e2565b3;
+}
+
+.emoji-option {
+    background: linear-gradient(145deg, #606060, #404040);
+    /* Frosted gradient */
+    border: none;
+    border-radius: 10px;
+    font-size: 24px;
+    padding: 5px;
+    cursor: pointer;
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #0e2565b3;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    animation: glow 4s infinite ease-in-out;
+}
+
+.emoji-option:hover {
+    box-shadow:
+        3px 3px 18px rgba(30, 58, 138, 1.0),
+        -3px -3px 18px rgba(255, 255, 255, 0.4);
+    transform: scale(1.1);
+}
+
+/* Ensure file links are clickable */
+#chat-box a.file-link {
+    color: #1e90ff;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* Disable pointer events for pseudo-elements that might overlap */
+.message::after {
+    pointer-events: none !important;
+}
+
+/*--------------------------------------------------------------------------NEW FOR THE 3 TABS IN THE MESSAGE WIGHET-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* Ensure file links are clickable */
+#chat-box a.file-link {
+    color: #1e90ff;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* Disable pointer events for pseudo-elements that might overlap */
+.message::after {
+    pointer-events: none !important;
+}
+
+/* Chat Header Layout Fix */
+.chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-right: 10px;
+    margin-top: 1px;
+}
+
+.chat-header h3 {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.chat-controls {
+    display: flex;
+    gap: 10px;
+    margin-right: 9em;
+    /* Adjust this value as needed */
+}
+
+.tab-button-group {
+    float: right;
+    display: flex;
+    gap: 8px;
+}
+
+/*--------------------------------------------------------------------------NEW FOR THE 3 TABS IN THE MESSAGE WIGHET-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+/* BYTE CHAT LIVE MESSEGING WIDGET (DashBoard Tab) -------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+/* =============================================================================================================
+   ============================================================== █████████ ====================================
+   ============================================================== █████████ ====================================
+   ==============================================================      ████ ====================================
+   ==============================================================      ████ ====================================
+   ==============================================================      ████ ====================================
+   Section 2: P2P Tab =========================================== █████████ ====================================
+   Dashboard Tab Styles ========================================= ████      ====================================
+   ============================================================== ████      ====================================
+   ============================================================== ████      ====================================
+   ============================================================== █████████ ====================================
+   ============================================================== █████████ ====================================
+   ============================================================================================================= */
+
+/* P2P MONEY TRANSFER WIDGET In (DashBoard Tab) ----------------------------------------------------------------------------------------------------------------------*/
+/* Transfer Money Feature (New Rule for P2P Tab) */
+/* P2P Tab Specific Grid Layout */
+#p2p .dashboard-container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: 300px 600px 500px 400px;
+    /* Fixed heights for each row */
+    gap: 80px;
+    padding: 70px;
+    height: 100;
+    /* Allow the container to size based on content */
+    min-height: 100%;
+    /* Ensure it takes at least the full viewport height */
+    box-sizing: border-box;
+}
+
+.transfer-money-container {
+    margin-top: 20px;
+    padding: 15px;
+    background: linear-gradient(145deg, #B0B0B0, #2d2c2c, );
+    /* Updated to match the brighter widget background */
+    border-radius: 15px;
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #0e2565b3;
+}
+
+/* Peer List for P2P Tab */
+.peer-list {
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.peer-list p {
+    margin: 5px 0;
+    font-size: 1em;
+}
+
+.transfer-money-container h4 {
+    margin: 0 0 10px 0;
+    font-size: 1.5em;
+    color: #E0E0E0;
+    text-shadow: 1.5px 1.5px 4.5px rgba(0, 0, 0, 0.3);
+    animation: glow 4s infinite ease-in-out;
+}
+
+.transfer-money-container .peer-select {
+    width: 100%;
+    max-width: 300px;
+    background: linear-gradient(145deg, #404040, #606060);
+    border: none;
+    border-radius: 15px;
+    padding: 8px 12px;
+    color: #E0E0E0;
+    font-family: 'Orbitron', 'Arial', sans-serif;
+    font-size: 1em;
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #0e2565b3;
+    margin-bottom: 10px;
+    transition: box-shadow 0.2s;
+}
+
+.transfer-money-container .peer-select:focus {
+    outline: none;
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #0e2565b3;
+}
+
+/* Transfer Money Input */
+.transfer-money-container .money-input {
+    width: 100%;
+    max-width: 300px;
+    background: linear-gradient(145deg, #404040, #606060);
+    border: none;
+    border-radius: 15px;
+    padding: 8px 12px;
+    color: #E0E0E0;
+    font-family: 'Orbitron', 'Arial', sans-serif;
+    font-size: 1em;
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #0e2565b3;
+    margin-bottom: 10px;
+    transition: box-shadow 0.2s;
+}
+
+.transfer-money-container .money-input:focus {
+    outline: none;
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #0e2565b3;
+}
+
+.transfer-money-container .money-input::placeholder {
+    color: #A0A0A0;
+    opacity: 0.8;
+    font-family: 'Orbitron', 'Arial', sans-serif;
+}
+
+/* Ensure Select Peer dropdown matches Payment Method dropdown */
+.active-p2p-connections .p2p-send-form .peer-select,
+.active-p2p-connections .p2p-send-form select:first-of-type {
+    background: linear-gradient(145deg, #404040, #606060);
+    border: none;
+    border-radius: 8px;
+    padding: 8px 12px;
+    color: #E0E0E0;
+    font-family: 'Orbitron', 'Arial', sans-serif;
+    font-size: 1em;
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #0e2565b3;
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+.active-p2p-connections .p2p-send-form .peer-select:focus,
+.active-p2p-connections .p2p-send-form select:first-of-type:focus {
+    outline: none;
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #0e2565b3;
+}
+
+/* Transfer Money Activity List */
+.transfer-money-container .activity-list {
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.transfer-money-container .activity-list p {
+    margin: 5px 0;
+    font-size: 1em;
+}
+
+/* Active P2P Connections Widget - Updated 2-Column Layout rounded */
+.active-p2p-connections {
+    background: linear-gradient(145deg, #808080, #606060);
+    /* Frosted gradient /*------------------------------------------*/
+    border-radius: 80px;
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #183facb3;
+    padding: 40px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, opacity 0.5s ease-in-out;
+    overflow: auto;
+    opacity: 0;
+    transform: scale(0.8);
+    will-change: transform, opacity;
+    justify-self: center;
+    align-self: center;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.active-p2p-connections .p2p-transfer-wrapper {
+    display: flex;
+    flex-direction: row;
+    height: calc(100% - 60px);
+    width: 100%;
+    gap: 20px;
+    overflow: hidden;
+}
+
+.active-p2p-connections .p2p-left-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(145deg, #B0B0B0, #808080);
+    /* Frosted gradient */
+    border-radius: 50px;
+    padding: 20px;
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #0e2565b3;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    overflow-y: auto;
+    min-height: 0;
+}
+
+.active-p2p-connections .p2p-right-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(145deg, #B0B0B0, #808080);
+    /* Frosted gradient */
+    border-radius: 50px;
+    padding: 20px;
+    font-size: 20;
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #0e2565b3;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    overflow: hidden;
+    min-height: 0;
+}
+
+.active-p2p-connections .transaction-log {
+    flex: 1;
+    overflow: visible;
+    position: relative;
+    max-height: 100%;
+    min-height: 0;
+}
+
+/* RECENT TRANSFERS HIGHT TRANSACTIONS *******************************************************************/
+/* RECENT TRANSFERS HIGHT TRANSACTIONS ****************************+**************************************/
+/* RECENT TRANSFERS HIGHT TRANSACTIONS *******************************************************************/
+/* RECENT TRANSFERS HIGHT TRANSACTIONS *******************************************************************/
+.active-p2p-connections .transaction-log ul#transaction-list {
+    list-style: none;
+    padding: 20px 0 0 0;
+    margin: 40px 0 0 0;
+    max-height: 920px;
+    overflow-y: auto;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    scrollbar-width: auto;
+    min-height: 0;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    font-size: 28px;
+}
+
+.active-p2p-connections:hover {
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #0e2565b3;
+}
+
+.active-p2p-connections .peer-list {
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: 20px;
+}
+
+.active-p2p-connections .peer-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    transition: background 0.2s ease-in-out;
+}
+
+.active-p2p-connections .peer-info:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.active-p2p-connections .peer-info i {
+    font-size: 2em;
+    color: #E0E0E0;
+    text-shadow: 0 0 10px rgba(29, 78, 216, 0.8);
+}
+
+.active-p2p-connections .peer-meta {
+    flex: 1;
+}
+
+.active-p2p-connections .peer-meta h4 {
+    margin: 0;
+    font-size: 1.2em;
+    color: #E0E0E0;
+    text-shadow: 1.5px 1.5px 4.5px rgba(0, 0, 0, 0.3);
+}
+
+.active-p2p-connections .peer-meta p {
+    margin: 5px 0 0;
+    font-size: 0.9em;
+    position: relative;
+    padding-left: 20px;
+    color: #E0E0E0;
+    /* Revert text color */
+}
+
+.active-p2p-connections .peer-meta .peer-status::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.active-p2p-connections .peer-meta .peer-status.online::before {
+    background: #0F0;
+    box-shadow: 0 0 10px #0F0;
+}
+
+.active-p2p-connections .peer-meta .peer-status.offline::before {
+    background: #F00;
+    box-shadow: 0 0 10px #F00;
+}
+
+.active-p2p-connections .p2p-send-form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.active-p2p-connections .p2p-send-form .soft-label {
+    font-size: 1em;
+    color: #E0E0E0;
+    text-shadow: 1.5px 1.5px 4.5px rgba(0, 0, 0, 0.3);
+}
+
+.active-p2p-connections .repeat-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.active-p2p-connections .p2p-send-form .amount-input,
+.active-p2p-connections .p2p-send-form .method-select,
+.active-p2p-connections .p2p-send-form .note-input,
+.active-p2p-connections .request-prompt .request-amount-input,
+.active-p2p-connections .request-prompt .request-note-input {
+    width: 100%;
+    background: linear-gradient(145deg, #404040, #606060);
+    border: none;
+    border-radius: 8px;
+    padding: 8px 12px;
+    color: #E0E0E0;
+    font-family: 'Orbitron', 'Arial', sans-serif;
+    font-size: 1em;
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #0e2565b3;
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+.active-p2p-connections .p2p-send-form .amount-input:focus,
+.active-p2p-connections .p2p-send-form .method-select:focus,
+.active-p2p-connections .p2p-send-form .note-input:focus,
+.active-p2p-connections .request-prompt .request-amount-input:focus,
+.active-p2p-connections .request-prompt .request-note-input:focus {
+    outline: none;
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #0e2565b3;
+}
+
+.active-p2p-connections .p2p-send-form .amount-input::placeholder,
+.active-p2p-connections .p2p-send-form .note-input::placeholder,
+.active-p2p-connections .request-prompt .request-amount-input::placeholder,
+.active-p2p-connections .request-prompt .request-note-input::placeholder {
+    color: #A0A0A0;
+    opacity: 0.8;
+    font-family: 'Orbitron', 'Arial', sans-serif;
+}
+
+.active-p2p-connections .p2p-send-form .form-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+
+/* Base styles for all buttons (updating border-radius to match tabs) */
+.active-p2p-connections .p2p-send-form .p2p-send-button,
+.active-p2p-connections .p2p-send-form .cancel-button,
+.active-p2p-connections .p2p-send-form .request-button,
+.active-p2p-connections .confirmation-prompt .confirm-button,
+.active-p2p-connections .confirmation-prompt .cancel-button,
+.active-p2p-connections .request-prompt .request-confirm-button,
+.active-p2p-connections .request-prompt .request-cancel-button {
+    border: none;
+    padding: 10px 20px;
+    border-radius: 15px;
+    /* Updated to match .action-button */
+    color: #E0E0E0;
+    font-family: 'Orbitron', 'Arial', sans-serif;
+    font-size: 1em;
+    font-weight: bold;
+    min-width: 120px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    text-shadow: 0 0 18px rgba(30, 58, 138, 0.9);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    animation: glow 4s infinite ease-in-out;
+}
+
+/* Glossy overlay for all buttons (updating border-radius to match tabs) */
+.active-p2p-connections .p2p-send-form .p2p-send-button::after,
+.active-p2p-connections .p2p-send-form .cancel-button::after,
+.active-p2p-connections .p2p-send-form .request-button::after,
+.active-p2p-connections .confirmation-prompt .confirm-button::after,
+.active-p2p-connections .confirmation-prompt .cancel-button::after,
+.active-p2p-connections .request-prompt .request-confirm-button::after,
+.active-p2p-connections .request-prompt .request-cancel-button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
+    border-radius: 15px;
+    /* Updated to match .action-button */
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Send Money Button (matches Dashboard tab style) */
+.active-p2p-connections .p2p-send-form .p2p-send-button {
+    background: linear-gradient(145deg, #606060, #404040);
+    /* Matches .action-button */
+    box-shadow:
+        7.5px 7.5px 15px rgba(0, 0, 0, 0.3),
+        -7.5px -7.5px 15px rgba(255, 255, 255, 0.2);
+    /* Matches .action-button */
+}
+
+.active-p2p-connections .p2p-send-form .p2p-send-button:hover {
+    box-shadow:
+        4.5px 4.5px 27px rgba(30, 58, 138, 1.0),
+        -4.5px -4.5px 27px rgba(255, 255, 255, 0.4);
+    /* Matches .action-button:hover */
+    transform: translateY(3px);
+    /* Matches .action-button:hover */
+}
+
+.active-p2p-connections .p2p-send-form .p2p-send-button:active {
+    transform: translateY(3px) scale(0.98);
+    /* Matches .action-button:active */
+    box-shadow:
+        3px 3px 12px rgba(0, 0, 0, 0.5),
+        inset 3px 3px 7.5px rgba(0, 0, 0, 0.3),
+        inset -3px -3px 7.5px rgba(255, 255, 255, 0.2);
+    /* Matches .action-button:active */
+}
+
+/* Cancel Button (matches Dashboard tab style) */
+.active-p2p-connections .p2p-send-form .cancel-button,
+.active-p2p-connections .confirmation-prompt .cancel-button,
+.active-p2p-connections .request-prompt .request-cancel-button {
+    background: linear-gradient(145deg, #606060, #404040);
+    /* Matches .action-button */
+    box-shadow:
+        7.5px 7.5px 15px rgba(0, 0, 0, 0.3),
+        -7.5px -7.5px 15px rgba(255, 255, 255, 0.2);
+    /* Matches .action-button */
+}
+
+.active-p2p-connections .p2p-send-form .cancel-button:hover,
+.active-p2p-connections .confirmation-prompt .cancel-button:hover,
+.active-p2p-connections .request-prompt .request-cancel-button:hover {
+    box-shadow:
+        4.5px 4.5px 27px rgba(30, 58, 138, 1.0),
+        -4.5px -4.5px 27px rgba(255, 255, 255, 0.4);
+    /* Matches .action-button:hover */
+    transform: translateY(3px);
+    /* Matches .action-button:hover */
+}
+
+.active-p2p-connections .p2p-send-form .cancel-button:active,
+.active-p2p-connections .confirmation-prompt .cancel-button:active,
+.active-p2p-connections .request-prompt .request-cancel-button:active {
+    transform: translateY(3px) scale(0.98);
+    /* Matches .action-button:active */
+    box-shadow:
+        3px 3px 12px rgba(0, 0, 0, 0.5),
+        inset 3px 3px 7.5px rgba(0, 0, 0, 0.3),
+        inset -3px -3px 7.5px rgba(255, 255, 255, 0.2);
+    /* Matches .action-button:active */
+}
+
+/* Request Payment Button (matches P2P selected tab style) */
+.active-p2p-connections .p2p-send-form .request-button {
+    background: linear-gradient(145deg, #1E3A8A, #162E6F);
+    /* Matches selected tab blue */
+    box-shadow:
+        7.5px 7.5px 15px rgba(0, 0, 0, 0.3),
+        -7.5px -7.5px 15px rgba(255, 255, 255, 0.2),
+        0 0 27px rgba(30, 58, 138, 1.0);
+    /* Adds blue glow to match selected tab */
+}
+
+.active-p2p-connections .p2p-send-form .request-button:hover {
+    background: linear-gradient(145deg, #2B4BA5, #233F8A);
+    /* Slightly brighter blue */
+    box-shadow:
+        4.5px 4.5px 27px rgba(30, 58, 138, 1.0),
+        -4.5px -4.5px 27px rgba(255, 255, 255, 0.4),
+        0 0 30px rgba(30, 58, 138, 1.0);
+    /* Stronger glow */
+    transform: translateY(3px);
+    /* Matches .action-button:hover */
+}
+
+.active-p2p-connections .p2p-send-form .request-button:active {
+    transform: translateY(3px) scale(0.98);
+    /* Matches .action-button:active */
+    box-shadow:
+        3px 3px 12px rgba(0, 0, 0, 0.5),
+        inset 3px 3px 7.5px rgba(0, 0, 0, 0.3),
+        inset -3px -3px 7.5px rgba(255, 255, 255, 0.2);
+    /* Matches .action-button:active */
+}
+
+.active-p2p-connections .p2p-send-form .repeat-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.active-p2p-connections .p2p-send-form .repeat-toggle label {
+    font-size: 0.9em;
+    color: #E0E0E0;
+    text-shadow: 1.5px 1.5px 4.5px rgba(0, 0, 0, 0.3);
+}
+
+.active-p2p-connections .p2p-send-form .repeat-toggle .repeat-checkbox {
+    appearance: none;
+    width: 40px;
+    height: 20px;
+    background: linear-gradient(145deg, #404040, #606060);
+    border-radius: 20px;
+    position: relative;
+    box-shadow:
+        inset 2px 2px 5px rgba(0, 0, 0, 0.4),
+        inset -2px -2px 5px rgba(255, 255, 255, 0.15);
+    cursor: pointer;
+    transition: background 0.2s ease-in-out;
+}
+
+.active-p2p-connections .p2p-send-form .repeat-toggle .repeat-checkbox::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 16px;
+    height: 16px;
+    background: linear-gradient(145deg, #606060, #B0B0B0);
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease-in-out;
+}
+
+.active-p2p-connections .p2p-send-form .repeat-toggle .repeat-checkbox:checked {
+    background: linear-gradient(145deg, #1E3A8A, #162E6F);
+}
+
+.active-p2p-connections .p2p-send-form .repeat-toggle .repeat-checkbox:checked::before {
+    transform: translateX(20px);
+}
+
+.active-p2p-connections .transaction-log h4 {
+    margin: 0;
+    font-size: 2.2em;
+    color: #dce5f2;
+    text-shadow:
+        0 0 6px rgba(173, 216, 255, 0.8),
+        0 0 14px rgba(173, 216, 255, 0.6),
+        0 0 28px rgba(173, 216, 255, 0.4);
+    animation: glow 4s infinite ease-in-out;
+    position: absolute;
+    /* Fix the title at the top */
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(145deg, #B0B0B0, #808080);
+    /* Frosted gradient */
+    z-index: 1;
+    /* Ensure it stays above the scrolling list */
+    padding: 5px 10px;
+    /* Add padding for better spacing */
+    border-radius: 8px 8px 0 0;
+    /* Rounded top corners to blend with container */
+    box-shadow:
+        inset 2px 2px 5px rgba(0, 0, 0, 0.3),
+        inset -2px -2px 5px rgba(255, 255, 255, 0.2);
+    /* Subtle inset shadow for skeuomorphic effect */
+}
+
+.active-p2p-connections .transaction-log ul {
+    list-style: none;
+    padding: 0;
+    margin: 40px 0 0 0;
+    /* Add margin-top to account for the fixed h4 height */
+    height: calc(100% - 40px);
+    /* Adjust height to fit within the container, accounting for h4 */
+    max-height: calc(100% - 40px);
+    /* Ensure the list doesn't overflow */
+    overflow-y: auto;
+    /* Enable scrolling for the list */
+    box-sizing: border-box;
+    /* Ensure padding/margins are included in height */
+    display: flex;
+    flex-direction: column;
+    /* Stack transactions from top to bottom */
+}
+
+.active-p2p-connections .transaction-log ul#transaction-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.active-p2p-connections .transaction-log ul#transaction-list li.sent span {
+    display: block;
+}
+
+.active-p2p-connections .transaction-log ul#transaction-list li.requested span {
+    display: block;
+}
+
+.active-p2p-connections .transaction-log ul#transaction-list li.sent .transaction-line-1 {
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.active-p2p-connections .transaction-log ul#transaction-list li.sent .transaction-line-2 {
+    font-size: 0.9em;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.active-p2p-connections .transaction-log ul#transaction-list li.requested .transaction-line-1 {
+    font-weight: 600;
+    color: #ffcc00;
+}
+
+.active-p2p-connections .transaction-log ul#transaction-list li.requested .transaction-line-2 {
+    font-size: 0.9em;
+    color: rgba(255, 204, 0, 0.7);
+}
+
+.active-p2p-connections .transaction-log ul#transaction-list::-webkit-scrollbar {
+    width: 8px;
+    /* Ensure scroll bar is visible in WebKit browsers */
+}
+
+.active-p2p-connections .transaction-log ul#transaction-list::-webkit-scrollbar-thumb {
+    background: #888;
+    /* Style the scroll bar thumb */
+    border-radius: 4px;
+}
+
+.active-p2p-connections .transaction-log ul#transaction-list::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    /* Hover effect for the scroll bar thumb */
+}
+
+.active-p2p-connections .transaction-log li {
+    padding: 10px;
+    background: rgba(21, 220, 81, 0.05);
+    /* Green tint for sent transactions */
+    border-radius: 8px;
+    margin-bottom: 8px;
+    font-size: 0.9em;
+    color: #E0E0E0;
+    display: flex;
+    flex-direction: column;
+    /* Change to column for dual-line display */
+    transition: background 0.2s ease-in-out;
+}
+
+/* Style for the first line (e.g., "User sent $78 to John Doe at 11:24 PM") */
+.active-p2p-connections .transaction-log li .transaction-line-1 {
+    font-weight: bold;
+    margin-bottom: 4px;
+    /* Space between the two lines */
+}
+
+/* Style for the second line (e.g., "$78 sent to John Doe – 2:24:25 PM") */
+.active-p2p-connections .transaction-log li .transaction-line-2 {
+    font-size: 0.85em;
+    color: #BBB;
+    /* Slightly lighter color for the second line */
+}
+
+.active-p2p-connections .transaction-log li.received {
+    background: rgba(255, 215, 0, 0.05);
+    /* Yellow tint for received transactions */
+}
+
+.active-p2p-connections .transaction-log li:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.active-p2p-connections .transaction-log li strong {
+    color: #1E90FF;
+    font-weight: bold;
+}
+
+/* Confirmation and Request Prompts */
+.active-p2p-connections .confirmation-prompt,
+.active-p2p-connections .request-prompt {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    background: linear-gradient(145deg, #B0B0B0, #808080);
+    /* Frosted gradient */
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow:
+        12px 12px 24px rgba(0, 0, 0, 0.4),
+        -12px -12px 24px rgba(255, 252, 255, 0.15),
+        inset 4.5px 4.5px 9px rgba(0, 0, 0, 0.25),
+        inset -4.5px -4.5px 9px rgba(255, 255, 255, 0.35),
+        0 0 30px rgba(29, 78, 216, 0.7);
+    padding: 20px;
+    z-index: 1001;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    opacity: 0;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.active-p2p-connections .confirmation-prompt.show,
+.active-p2p-connections .request-prompt.show {
+    display: flex;
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
+
+.active-p2p-connections .confirmation-prompt p,
+.active-p2p-connections .request-prompt p {
+    font-size: 1.2em;
+    text-align: center;
+    color: #E0E0E0;
+    text-shadow: 1.5px 1.5px 4.5px rgba(0, 0, 0, 0.3);
+    margin: 0;
+}
+
+.active-p2p-connections .confirmation-prompt .confirmation-buttons,
+.active-p2p-connections .request-prompt .request-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+/* Toast Notification */
+.active-p2p-connections .p2p-toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #1E3A8A, #162E6F);
+    color: #E0E0E0;
+    padding: 15px 25px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #0e2565b3;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 1003;
+    font-family: 'Orbitron', 'Arial', sans-serif;
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.active-p2p-connections .p2p-toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.active-p2p-connections .p2p-toast.success {
+    border-left: 4px solid #0F0;
+}
+
+.active-p2p-connections .p2p-toast.cancel {
+    border-left: 4px solid #F00;
+}
+
+.active-p2p-connections .p2p-toast.request {
+    border-left: 4px solid #FFD700;
+}
+
+.active-p2p-connections .p2p-toast .close-toast {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.5) 0%, rgba(255, 255, 255, 0.3) 100%);
+    border: none;
+    border-radius: 50%;
+    color: #E0E0E0;
+    font-size: 12px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #0e2565b3;
+    transition: background 0.2s;
+}
+
+.active-p2p-connections .p2p-toast .close-toast:hover {
+    background: linear-gradient(135deg, #1E3A8A, #162E6F);
+}
+
+/* Confirmation Stamp */
+.active-p2p-connections .confirmation-stamp {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    color: #0F0;
+    font-size: 5em;
+    z-index: 1002;
+    opacity: 0;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.active-p2p-connections .confirmation-stamp.show {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
+
+/* Confirmation Prompt Yes Button (matches Request Payment button) */
+.active-p2p-connections .confirmation-prompt .confirm-button {
+    background: linear-gradient(145deg, #1E3A8A, #162E6F);
+    box-shadow:
+        7.5px 7.5px 15px rgba(0, 0, 0, 0.3),
+        -7.5px -7.5px 15px rgba(255, 255, 255, 0.2),
+        0 0 27px rgba(30, 58, 138, 1.0);
+}
+
+.active-p2p-connections .confirmation-prompt .confirm-button:hover {
+    background: linear-gradient(145deg, #2B4BA5, #233F8A);
+    box-shadow:
+        4.5px 4.5px 27px rgba(30, 58, 138, 1.0),
+        -4.5px -4.5px 27px rgba(255, 255, 255, 0.4),
+        0 0 30px rgba(30, 58, 138, 1.0);
+    transform: translateY(3px);
+}
+
+.active-p2p-connections .confirmation-prompt .confirm-button:active {
+    transform: translateY(3px) scale(0.98);
+    box-shadow:
+        3px 3px 12px rgba(0, 0, 0, 0.5),
+        inset 3px 3px 7.5px rgba(0, 0, 0, 0.3),
+        inset -3px -3px 7.5px rgba(255, 255, 255, 0.2);
+}
+
+/* Request Prompt Confirm Button (matches Request Payment button) */
+.active-p2p-connections .request-prompt .request-confirm-button {
+    background: linear-gradient(145deg, #1E3A8A, #162E6F);
+    box-shadow:
+        7.5px 7.5px 15px rgba(0, 0, 0, 0.3),
+        -7.5px -7.5px 15px rgba(255, 255, 255, 0.2),
+        0 0 27px rgba(30, 58, 138, 1.0);
+}
+
+.active-p2p-connections .request-prompt .request-confirm-button:hover {
+    background: linear-gradient(145deg, #2B4BA5, #233F8A);
+    box-shadow:
+        4.5px 4.5px 27px rgba(30, 58, 138, 1.0),
+        -4.5px -4.5px 27px rgba(255, 255, 255, 0.4),
+        0 0 30px rgba(30, 58, 138, 1.0);
+    transform: translateY(3px);
+}
+
+.active-p2p-connections .request-prompt .request-confirm-button:active {
+    transform: translateY(3px) scale(0.98);
+    box-shadow:
+        3px 3px 12px rgba(0, 0, 0, 0.5),
+        inset 3px 3px 7.5px rgba(0, 0, 0, 0.3),
+        inset -3px -3px 7.5px rgba(255, 255, 255, 0.2);
+}
+
+/* P2P MONEY TRANSFER WIDGET In (DashBoard Tab) ----------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* TO BE ANOUNCED In (DashBoard Tab) ---------------------------------------------------------------------------------------------------------------------------------*/
+
+
+
+
+
+
+
+
+
+/* TO BE ANOUNCED In (DashBoard Tab) ---------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* TO BE ANOUNCED In (DashBoard Tab) ---------------------------------------------------------------------------------------------------------------------------------*/
+
+
+
+
+
+
+
+
+
+/* TO BE ANOUNCED In (DashBoard Tab) ---------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* P2P FREQUENTLY ASKED QUESTION FLIPPABLE CARDS IN (P2P Tab) --------------------------------------------------------------------------------------------------------*/
+/* P2P Section Title (Used by P2P Frequently Asked Questions) */
+.p2p-section-title {
+    margin-bottom: 20px;
+    /* Keeps the spacing below to prevent overlap */
+    margin-top: 0;
+    /* Ensure no extra margin above the title */
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #E0E0E0;
+    font-size: 2.5em;
+    /* Matches Q&A title size */
+    text-shadow: 1.5px 1.5px 4.5px rgba(0, 0, 0, 0.3);
+    animation: glow 4s infinite ease-in-out;
+    padding-left: 20px;
+    /* Matches Q&A title padding */
+}
+
+/* P2P Q&A Grid */
+.p2p-qna-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* 4 columns */
+    grid-template-rows: repeat(2, 1fr);
+    /* 2 rows */
+    gap: 20px;
+    /* Smaller gap between the nested widgets */
+    height: 100%;
+}
+
+.p2p-qna-widget {
+    background: linear-gradient(225deg, #606060, #B0B0B0);
+    border-radius: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #0e2565b3;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Center vertically */
+    align-items: center;
+    /* Center horizontally */
+    transition: box-shadow 0.3s ease-in-out;
+    perspective: 1000px;
+    /* Add perspective for 3D effect */
+}
+
+.p2p-qna-widget:hover {
+    box-shadow:
+        6px 6px 18px rgba(0, 0, 0, 0.5),
+        -6px -6px 18px rgba(255, 255, 255, 0.25),
+        inset 3px 3px 6px rgba(0, 0, 0, 0.3),
+        inset -3px -3px 6px rgba(255, 255, 255, 0.4),
+        0 0 60px rgba(70, 120, 255, 1),
+        0 0 15px rgba(70, 120, 255, 1);
+}
+
+.p2p-qna-widget h3 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    padding: 0 10px;
+}
+
+/* Style for the P2P Frequently Asked Questions number */
+.p2p-qna-number {
+    margin-right: 8px;
+    font-weight: bold;
+    color: #E0E0E0;
+    text-shadow: 1.5px 1.5px 4.5px rgba(0, 0, 0, 0.3);
+}
+
+/* Card flip styles */
+.p2p-qna-card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.p2p-qna-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease;
+    /* Smooth flip animation */
+}
+
+.p2p-qna-card.flipped .p2p-qna-card-inner {
+    transform: rotateY(180deg);
+}
+
+.p2p-qna-card-front,
+.p2p-qna-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    background: linear-gradient(225deg, #606060, #B0B0B0);
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #0e2565b3;
+}
+
+.p2p-qna-card-front {
+    transform: rotateY(0deg);
+    cursor: pointer;
+}
+
+.p2p-qna-card-back {
+    transform: rotateY(180deg);
+    cursor: pointer;
+}
+
+/* Remove cursor from .p2p-qna-toggle since the entire card is now clickable */
+.p2p-qna-toggle {
+    transition: color 0.3s ease;
+    /* Keep the hover color transition */
+}
+
+.p2p-qna-toggle:hover {
+    color: #1E3A8A;
+    /* Change color on hover to indicate interactivity */
+}
+
+/* Specific rule for P2P Q&A answers */
+.p2p-qna-card-back .p2p-qna-answer {
+    margin-top: 10px;
+    font-size: 2em;
+    /* Increased to 2.5em as per your update */
+    line-height: 1.2;
+    /* Added to improve readability with larger text */
+    text-align: center;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 12px;
+    /* Increased from 8px to 12px to give more space */
+    text-shadow: 0 0 18px rgba(29, 78, 216, 0.9);
+    animation:
+        glow 4s infinite ease-in-out,
+        breathe 2.5s infinite ease-in-out;
+}
+
+/* P2P FREQUENTLY ASKED QUESTION FLIPPABLE CARDS IN (DashBoard Tab) --------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* P2P NETWORK INSIGHTS IN (P2P Tab) ---------------------------------------------------------------------------------------------------------------------------------*/
+/* P2P Network Insights Widget */
+.widget[style*="grid-column: 1 / 3"][style*="grid-row: 4 / 9"] {
+    height: 980px;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.p2p-insights-container {
+    background: linear-gradient(225deg, #606060, #B0B0B0);
+    border-radius: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #0e2565b3;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.3s ease-in-out;
+    height: 980px;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.p2p-insights-container:hover {
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #0e2565b3;
+}
+
+/* Specific title style for P2P Network Insights */
+.p2p-insights-title {
+    margin-bottom: 20px;
+    /* Keeps the spacing below to prevent overlap */
+    margin-top: 0;
+    /* Ensure no extra margin above the title */
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #E0E0E0;
+    font-size: 3em;
+    text-shadow: 1.5px 1.5px 4.5px rgba(0, 0, 0, 0.3);
+    animation: glow 4s infinite ease-in-out;
+    padding-left: 20px;
+}
+
+.p2p-insights-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.p2p-insights-section h3 {
+    font-size: 2.4em;
+    font-weight: normal;
+    color: #e6ebf7;
+    text-shadow: 0 0 10px rgba(148, 180, 255, 0.4);
+    margin-bottom: 12px;
+    padding-left: 26px;
+}
+
+.p2p-insights-section ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.p2p-insights-section li {
+    font-size: 2.1em;
+    color: #d8deea;
+    text-shadow: 1.5px 1.5px 4.5px rgba(0, 0, 0, 0.3);
+    margin-bottom: 6px;
+    padding-left: 56px;
+    position: relative;
+}
+
+.p2p-insights-section li::before {
+    content: '';
+    position: absolute;
+    left: 26px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #E0E0E0;
+    box-shadow: 0 0 6px rgba(130, 164, 243, 0.6), 0 0 12px rgba(130, 164, 243, 0.4);
+    animation: bullet-glow 4s infinite ease-in-out;
+}
+
+/* P2P NETWORK INSIGHTS IN (P2P Tab) ---------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* P2P BYTE CHATE LIVE MESSAGING WIDGET IN (P2P Tab) -----------------------------------------------------------------------------------------------------------------*/
+/* P2P BytChat Live Messesing Tittle */
+.p2p-chat-container h3 {
+    margin-bottom: 15px;
+    padding-bottom: 7.5px;
+    border-bottom: 1.5px solid rgba(255, 255, 255, 0.1);
+    font-size: 2.25em;
+    animation: glow 4s infinite ease-in-out;
+    align-self: flex-start;
+    margin-top: 0;
+}
+
+/* P2P ByteChat Live Messaging Widget Border and roundedness*/
+.p2p-chat-window {
+    filter: none !important;
+    opacity: 1 !important;
+    transition: filter 0.3s ease;
+    width: 100%;
+    max-height: 1550px;
+    position: relative;
+    background: linear-gradient(145deg, #808080, #606060);
+    /* Frosted gradient */
+    border-radius: 80px;
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #0e2565b3;
+    padding: 40px;
+    overflow: auto;
+    z-index: 2;
+    min-width: 0;
+    min-height: 0;
+}
+
+/* P2P BytChat Live Messesing Whole Color Widget */
+.p2p-chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-height: calc(100% - 60px);
+    background: linear-gradient(145deg, #808080, #606060);
+    /* Frosted gradient */
+    border-radius: 50px;
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #0e2565b3;
+    padding: 30px;
+}
+
+/* P2P BytChat Live Messesing Inside Color ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------THE TABS IN THE BYTECHAT WIDGET AREA ---*/
+#p2p-chat-box {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    padding: 45px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column-reverse;
+    min-height: 300px;
+    max-height: 100%;
+}
+
+/* P2P BytChat Live Messesing Outside Type Your Message Bar But Buttons Color */
+.p2p-input-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(145deg, #808080, #606060);
+    /* Frosted gradient */
+    border-radius: 25px;
+    padding: 10px 15px;
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #0e2565b3;
+    margin-top: 10px;
+}
+
+/* P2P BytChat Live Messesing Type Your Message Bar Color */
+#p2p-user-input {
+    flex: 1;
+    background: linear-gradient(145deg, #606060, #404040);
+    /* Frosted gradient */
+    border: none;
+    border-radius: 20px;
+    padding: 10px 15px;
+    color: #E0E0E0;
+    font-family: 'Orbitron', 'Arial', sans-serif;
+    font-size: 1em;
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #0e2565b3;
+    transition: box-shadow 0.2s;
+}
+
+/* P2P BytChat Live Messesing Type Your Message Text Color */
+#p2p-user-input::placeholder {
+    color: #A0A0A0;
+    opacity: 0.8;
+    font-family: 'Orbitron', 'Arial', sans-serif;
+}
+
+/* P2P BytChat Live Messesing File Link Color */
+#p2p-chat-box a.file-link {
+    color: #1e90ff;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.p2p-chat-window:hover,
+.p2p-chat-window:focus-within {
+    filter: none !important;
+    opacity: 1 !important;
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #0e2565b3;
+}
+
+.widget.p2p-chat-window:hover {
+    opacity: 1 !important;
+    filter: none !important;
+}
+
+.dashboard-container.blurred .p2p-chat-window {
+    filter: none !important;
+    opacity: 1 !important;
+}
+
+.widget[style*="grid-column: 2 / 6"][style*="grid-row: 2 / 4"] {
+    height: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+#p2p-chat-box .message:first-child {
+    animation: bubbleUp 0.5s ease-out forwards;
+}
+
+#p2p-user-input:focus {
+    outline: none;
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #0e2565b3;
+    filter: none !important;
+    opacity: 1 !important;
+}
+
+.p2p-expand-button#p2p-expand-chat {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 6px;
+    font-size: 0.85em;
+    z-index: 1002;
+}
+
+.p2p-chat-window.p2p-chat-expanded .p2p-expand-button#p2p-expand-chat {
+    display: none;
+}
+
+.p2p-chat-window.p2p-chat-expanded .p2p-expand-button#p2p-expand-chat i::before {
+    content: "\f066";
+}
+
+.p2p-close-button#p2p-close-chat {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 8px 12px;
+    font-size: 1em;
+    background: linear-gradient(145deg, #606060, #404040);
+    /* Frosted gradient */
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #0e2565b3;
+    border: none;
+    border-radius: 10px;
+    color: #E0E0E0;
+    font-family: 'Orbitron', 'Arial', sans-serif;
+    text-shadow: 0 0 12px rgba(30, 58, 138, 0.9);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    animation: glow 4s infinite ease-in-out;
+    display: none;
+    z-index: 1002;
+    cursor: pointer;
+}
+
+.p2p-close-button#p2p-close-chat:hover {
+    background: linear-gradient(135deg, #1E3A8A, #162E6F);
+}
+
+.p2p-chat-window.p2p-chat-expanded .p2p-close-button#p2p-close-chat {
+    display: block;
+}
+
+.p2p-chat-window.p2p-chat-expanded {
+    position: fixed;
+    top: 20%;
+    /* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------Added to scale the expand message widget to 20% */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 100vh;
+    max-width: 3200px;
+    max-height: 1920px;
+    z-index: 1001;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #0e2565b3;
+    background: linear-gradient(to top right, #4A4A4A, #D3D3D3);
+    filter: none !important;
+    zoom: 0.2;
+    /* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------Added to scale the tab bar to 20% */
+}
+
+.p2p-chat-window.p2p-chat-expanded .p2p-chat-container {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.p2p-chat-window.p2p-chat-expanded #p2p-chat-box {
+    min-height: 400px;
+    max-height: calc(100% - 120px);
+    overflow-y: auto;
+}
+
+.p2p-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    z-index: 999;
+    display: none;
+}
+
+.p2p-overlay.active {
+    display: block;
+}
+
+#p2p-emoji-picker {
+    position: absolute;
+    bottom: 105px;
+    left: 15px;
+    z-index: 1000;
+    background: linear-gradient(225deg, #606060, #B0B0B0);
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    border-radius: 37.5px;
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #0e2565b3;
+    padding: 22.5px;
+    max-height: 450px;
+    overflow-y: auto;
+    display: none;
+    flex-direction: column;
+}
+
+/* Style specifically for the P2P ByteChat Live Messaging widget */
+.p2p-chat-widget {
+    width: 300px;
+    /* Match the width from the second screenshot */
+    max-height: 100px;
+    /* Fixed height to match the compact size in the second screenshot */
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    /* Prevent the widget from shrinking */
+    flex-grow: 0;
+    /* Prevent the widget from growing */
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    overflow: hidden;
+    /* Ensure content doesn't overflow outside the widget */
+}
+
+/* Style for the chat box inside the widget AND THE HIGHT*/
+#p2p-chat-box {
+    flex: 1;
+    /* Take up the available space within the widget */
+    max-height: 1350px;
+    /* Adjust to fit within the widget, leaving space for the header and input */
+    overflow-y: auto;
+    /* Add scrollbar for overflowing messages */
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/* Style for the chat input area to ensure it doesn't affect the widget height */
+.p2p-chat-input {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Ensure messages don't cause stretching */
+#p2p-chat-box .message {
+    margin-bottom: 10px;
+    word-wrap: break-word;
+    margin-left: 30px;
+    /* Add a gap on the left for bot messages */
+    margin-right: 40px;
+    /* Ensure the bot message doesn't stretch too far to the right */
+    margin-bottom: 40px;
+}
+
+@media (max-width: 768px) {
+    .p2p-chat-window {
+        grid-column: span 1;
+        width: 100%;
+        height: 400px;
+    }
+
+    .p2p-chat-window.p2p-chat-expanded {
+        width: 100vw;
+        height: 100vh;
+        max-width: 1200px;
+        max-height: 800px;
+        padding: 20px;
+    }
+
+    .p2p-chat-window.p2p-chat-expanded .p2p-chat-container {
+        max-height: calc(100% - 40px);
+    }
+
+    #p2p-emoji-picker {
+        bottom: 60px;
+        left: 5px;
+        width: 90%;
+        max-height: 200px;
+    }
+}
+
+/*--------------------------------------------------------------------------P2P VERSION – 3 TABS IN BYTECHAT P2P WIDGET-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+#p2p-chat-box a.file-link {
+    color: #1e90ff;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* Disable pointer events for pseudo-elements that might overlap */
+.p2p-message::after {
+    pointer-events: none !important;
+}
+
+/* Chat Header Layout Fix */
+.p2p-chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-right: 10px;
+    margin-top: 1px;
+}
+
+.p2p-chat-header h3 {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.p2p-chat-controls {
+    display: flex;
+    gap: 20px;
+    margin-right: 9em;
+    /* Adjust this value as needed */
+}
+
+.p2p-tab-button-group {
+    float: right;
+    display: flex;
+    gap: 8px;
+}
+
+/* P2P BYTE CHATE LIVE MESSAGING WIDGET IN (P2P Tab) -----------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+/* ==============================================================================================================
+   ============================================================== █████████ =====================================
+   ============================================================== █████████ =====================================
+   ==============================================================      ████ =====================================
+   ==============================================================      ████ =====================================
+   Section 3: File Transfer Tab ================================= █████████ =====================================
+   Dashboard Tab Styles =========================================      ████ =====================================
+   ==============================================================      ████ =====================================
+   ============================================================== █████████ =====================================
+   ============================================================== █████████ =====================================
+   ============================================================================================================== */
+
+/* TO BE ANOUNCED In (DashBoard Tab) ---------------------------------------------------------------------------------------------------------------------------------*/
+
+
+
+
+
+
+
+
+
+/* TO BE ANOUNCED In (DashBoard Tab) ---------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* TO BE ANOUNCED In (DashBoard Tab) ---------------------------------------------------------------------------------------------------------------------------------*/
+
+
+
+
+
+
+
+
+
+/* TO BE ANOUNCED In (DashBoard Tab) ---------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* TO BE ANOUNCED In (DashBoard Tab) ---------------------------------------------------------------------------------------------------------------------------------*/
+
+
+
+
+
+
+
+
+
+/* TO BE ANOUNCED In (DashBoard Tab) ---------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+/* ===============================================================================================================
+   =============================================================  ████   ████   ==================================
+   =============================================================  ████   ████   ==================================
+   =============================================================  ████   ████   ==================================
+   =============================================================  ████   ████   ==================================
+   Section 4: SECURITY TAB =====================================  █████████████ ==================================
+   Dashboard Tab Styles ========================================        ████    ==================================
+   =============================================================        ████    ==================================
+   =============================================================        ████    ==================================
+   =============================================================        ████    ==================================
+   =============================================================================================================== */
+
+/* TO BE ANOUNCED In (DashBoard Tab) ---------------------------------------------------------------------------------------------------------------------------------*/
+
+
+
+
+
+
+
+
+
+/* TO BE ANOUNCED In (DashBoard Tab) ---------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* TO BE ANOUNCED In (DashBoard Tab) ---------------------------------------------------------------------------------------------------------------------------------*/
+
+
+
+
+
+
+
+
+
+/* TO BE ANOUNCED In (DashBoard Tab) ----------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* TO BE ANOUNCED In (DashBoard Tab) ----------------------------------------------------------------------------------------------------------------------------------*/
+
+
+
+
+
+
+
+
+
+/* TO BE ANOUNCED In (DashBoard Tab) --------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+/* ==============================================================================================================
+   ============================================================== ██████████ ====================================
+   ============================================================== ██████████ ====================================
+   ============================================================== █████      ====================================
+   ============================================================== █████      ====================================
+   Section 5: QNA Tab =========================================== ██████████ ====================================
+   Dashboard Tab Styles =========================================      █████ ====================================
+   ==============================================================      █████ ====================================
+   ============================================================== ██████████ ====================================
+   ============================================================== ██████████ ====================================
+   ============================================================================================================== */
+
+/* Frequently Asked Questions Flibbable Cards (DashBoard Tab) -------------------------------------------------------------------------------------------------------*/
+/* Read More Button IN THE QNA TAB FLIP CARD--------------------------------------*/
+/* Read More Button */
+.read-more-btn {
+    background: linear-gradient(145deg, #606060, #404040);
+    /* Frosted gradient */
+    box-shadow:
+        0 18px 36px rgba(0, 0, 0, 0.5),
+        inset 0 4.5px 9px rgba(255, 255, 255, 0.6);
+    border: none;
+    border-radius: 15px;
+    padding: 15px 22.5px;
+    color: #E0E0E0;
+    font-family: 'Orbitron', 'Arial', sans-serif;
+    font-size: 18px;
+    min-width: 135px;
+    white-space: nowrap;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7.5px;
+    text-shadow: 0 0 18px rgba(30, 58, 138, 0.9);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    animation: glow 4s infinite ease-in-out;
+    margin: 7.5px;
+}
+
+.read-more-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
+    border-radius: 15px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.read-more-btn:hover {
+    box-shadow:
+        4.5px 4.5px 27px rgba(30, 58, 138, 1.0),
+        -4.5px -4.5px 27px rgba(255, 255, 255, 0.4);
+    transform: translateY(3px);
+}
+
+.read-more-btn:active {
+    transform: translateY(3px) scale(0.98);
+    box-shadow:
+        3px 3px 12px rgba(0, 0, 0, 0.5),
+        inset 3px 3px 7.5px rgba(0, 0, 0, 0.3),
+        inset -3px -3px 7.5px rgba(255, 255, 255, 0.2);
+}
+
+.read-more-btn::before {
+    content: '\f0c1';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    font-size: 0.9em;
+}
+
+/* Read More Button IN THE QNA TAB FLIP CARD--------------------------------------*/
+
+/* Q&A Grid Container */
+.qna-grid-container {
+    display: flex;
+    flex-direction: column;
+    padding: 28px;
+    /* Reduced padding to fit the nested grid */
+    box-shadow:
+        0 18px 36px rgba(0, 0, 0, 0.5),
+        inset 0 4.5px 9px rgba(255, 255, 255, 0.6);
+}
+
+/* Q&A Grid (Frequently Asked Questions Widget) */
+.qna-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* 4 columns */
+    grid-template-rows: repeat(3, 1fr);
+    /* 3 rows */
+    gap: 20px;
+    /* Smaller gap between the nested widgets */
+    height: 100%;
+}
+
+
+/* Q&A FLIP CARDS OUTER STYLE */
+.qna-widget {
+    background: linear-gradient(225deg, #606060, #B0B0B0);
+    background-color: linear-gradient(145deg #404040, #606060, #404040);
+    box-shadow:
+        0 18px 36px rgba(0, 0, 0, 0.5),
+        inset 0 4.5px 9px rgba(255, 255, 255, 0.6);
+    border-radius: 60px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #0e2565b3;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Center vertically */
+    align-items: center;
+    /* Center horizontally */
+    transition: box-shadow 0.3s ease-in-out;
+    perspective: 1000px;
+    /* Add perspective for 3D effect */
+}
+
+.qna-widget:hover {
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #0e2565b3;
+}
+
+.qna-widget h3 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    padding: 0 10px;
+}
+
+/* Style for the Frequently Asked Questions title in Q&A tab */
+.qna-section-title {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    text-shadow: 1.5px 1.5px 4.5px rgba(0, 0, 0, 0.3);
+    font-size: 2.5em;
+    animation: glow 4s infinite ease-in-out;
+    color: #E0E0E0;
+}
+
+.qna-number {
+    margin-right: 4px;
+    font-weight: bold;
+    color: #E0E0E0;
+    text-shadow: 1.5px 1.5px 4.5px rgba(0, 0, 0, 0.3);
+}
+
+/* Specific adjustments for widgets 1-7 */
+.qna-grid>.qna-widget:nth-child(-n+7) h3 {
+    justify-content: flex-start;
+    padding-left: 20px;
+}
+
+/* Card flip styles */
+.qna-card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.qna-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease;
+    /* Smooth flip animation */
+}
+
+.qna-card.flipped .qna-card-inner {
+    transform: rotateY(180deg);
+}
+
+.qna-card-front,
+.qna-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    background: linear-gradient(225deg, #606060, #B0B0B0);
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #0e2565b3;
+}
+
+.qna-card-front {
+    transform: rotateY(0deg);
+    cursor: pointer;
+}
+
+.qna-card-back {
+    transform: rotateY(180deg);
+    cursor: pointer;
+}
+
+/* Remove cursor from .qna-toggle since the entire card is now clickable */
+.qna-toggle {
+    transition: color 0.3s ease;
+    /* Keep the hover color transition */
+}
+
+.qna-toggle:hover {
+    color: #1E3A8A;
+    /* Change color on hover to indicate interactivity */
+}
+
+.qna-answer {
+    margin-top: 10px;
+    font-size: 2.5em;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 80px;
+    padding: 8px;
+    text-shadow: 0 0 18px rgba(29, 78, 216, 0.9);
+    animation:
+        glow 4s infinite ease-in-out,
+        breathe 2.5s infinite ease-in-out;
+}
+
+/* Frequently Asked Questions Flibbable Cards (DashBoard Tab) --------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* BOT CHAT (BIG) MESSAGE WIDGET In (QNA Tab) ------------------------------------------------------------------------------------------------------------------------*/
+
+
+
+
+
+
+
+
+
+/* BOT CHAT (BIG) MESSAGE WIDGET In (QNA Tab) ------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* BOT CHAT (BIG) MESSAGE WIDGET In (QNA Tab) ------------------------------------------------------------------------------------------------------------------------*/
+
+
+
+
+
+
+
+
+
+/* BOT CHAT (BIG) MESSAGE WIDGET In (QNA Tab) ------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* BOT CHAT (BIG) MESSAGE WIDGET In (QNA Tab) ------------------------------------------------------------------------------------------------------------------------*/
+/* Q&A Bot Chat Widget Outer Window (Single Outer Layer) */
+.qna-bot-chat-window {
+    filter: none !important;
+    opacity: 1 !important;
+    transition: filter 0.3s ease;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: linear-gradient(145deg, #808080, #606060);
+    /* Frosted gradient */
+    border-radius: 80px;
+    /* Matches the ByteChat widget */
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #1d4ed8b3;
+    padding: 40px;
+    /* Matches ByteChat's outer padding */
+    border: 2px solid rgba(29, 78, 216, 0.5);
+    /* Blue glowing border for divider effect */
+    overflow: auto;
+    z-index: 2;
+    min-width: 0;
+    min-height: 0;
+    box-sizing: border-box;
+    display: flex;
+    /* Ensure the inner container stretches properly */
+    flex-direction: column;
+}
+
+.qna-bot-chat-window:hover,
+.qna-bot-chat-window:focus-within {
+    filter: none !important;
+    opacity: 1 !important;
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #0e2565b3;
+    /* Enhanced glow on hover */
+}
+
+.dashboard-container.blurred .qna-bot-chat-window {
+    filter: none !important;
+    opacity: 1 !important;
+}
+
+/* Inner Container for Chat */
+.qna-bot-chat-window .qna-bot-chat-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    /* Ensure it takes up available space */
+    height: 100%;
+    max-height: calc(100% - 60px);
+    /* Preserve existing max-height */
+    background: linear-gradient(145deg, #808080, #606060);
+    /* Frosted gradient */
+    border-radius: 50px;
+    /* Matches ByteChat's inner border-radius */
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #1d4ed8b3;
+    padding: 30px;
+    /* Matches ByteChat's inner padding */
+}
+
+/* Style the Title Inside the Inner Container */
+.qna-bot-chat-container h3 {
+    margin: 0 0 20px 0;
+    padding: 0;
+    color: #E0E0E0;
+    font-family: 'Orbitron', 'Arial', sans-serif;
+    font-size: 3em;
+    /* Matches ByteChat's larger title size */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+/* Chat Box Background and Height */
+.qna-bot-chat-window #qna-bot-chat-box {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    padding: 45px;
+    /* Preserve existing padding */
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 300px;
+    /* Preserve existing min-height */
+    max-height: 1050px;
+    /* Preserve existing max-height */
+}
+
+/* Override text-shadow for chat messages to make text sharper */
+.qna-bot-chat-window .message .content,
+.qna-bot-chat-window .message .timestamp {
+    text-shadow: none !important;
+}
+
+/* Bot Chat BOT Message GREY BUBBLES */
+/*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+.qna-bot-chat-window .message.bot {
+    max-width: 70%;
+    align-self: flex-start;
+    padding: 12px 20px;
+    border-radius: 25px;
+    word-wrap: break-word;
+    font-size: 35px !important;
+    /* Matches user message font size */
+    line-height: 1.4;
+    margin: 10px 0;
+    background: linear-gradient(145deg, #606060, #404040);
+    /* Frosted gradient */
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #1d4ed8b3;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    filter: none !important;
+    opacity: 1 !important;
+    margin-left: 35px;
+    margin-right: 40px;
+    margin-bottom: 35px;
+}
+
+/* Bot Chat Message BLUE BUBBLES */
+/*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+.qna-bot-chat-window .message.user {
+    margin-right: 30px;
+    margin-left: 40px;
+    margin-bottom: 25px;
+    line-height: 1.4;
+    font-size: 35px !important;
+    border-radius: 35px;
+    align-self: flex-end;
+    background: linear-gradient(145deg, #1E3A8A, #162E6F);
+    color: #E0E0E0;
+    max-width: 80%;
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #1d4ed8b3;
+}
+
+/* Username and Content Styling */
+.qna-bot-chat-window .message .username,
+.qna-bot-chat-window .message .content {
+    display: inline-block;
+}
+
+.qna-bot-chat-window .message .username {
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.qna-bot-chat-window .message .content {
+    font-size: 1em;
+}
+
+/* Timestamp Styling */
+.qna-bot-chat-window .message .timestamp {
+    font-size: 0.8em;
+    color: whitesmoke;
+    align-self: flex-end;
+    margin-top: 20px;
+}
+
+/* Align Username for User Messages */
+.qna-bot-chat-window #qna-bot-chat-box .message.user .username {
+    align-self: flex-end;
+    text-align: right;
+    margin-right: 5px;
+}
+
+/* Input Container */
+.qna-bot-chat-window .qna-bot-input-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(145deg, #808080, #606060);
+    border-radius: 25px;
+    padding: 10px 15px;
+    /* Preserve existing padding */
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #1d4ed8b3;
+    margin-top: 10px;
+}
+
+/* Input Field */
+.qna-bot-chat-window #qna-bot-user-input {
+    flex: 1;
+    background: linear-gradient(145deg, #606060, #404040);
+    border: none;
+    border-radius: 20px;
+    padding: 10px 15px;
+    /* Preserve existing padding */
+    color: #E0E0E0;
+    font-family: 'Orbitron', 'Arial', sans-serif;
+    font-size: 1em;
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #0e2565b3;
+    transition: box-shadow 0.2s;
+}
+
+.qna-bot-chat-window #qna-bot-user-input:focus {
+    outline: none;
+    box-shadow:
+
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #1d4ed8b3;
+}
+
+/* Placeholder Styling */
+.qna-bot-chat-window #qna-bot-user-input::placeholder {
+    color: #A0A0A0;
+    opacity: 0.8;
+    font-family: 'Orbitron', 'Arial', sans-serif;
+}
+
+/* First Message Animation */
+.qna-bot-chat-window #qna-bot-chat-box .message:first-child {
+    animation: bubbleUp 0.5s ease-out forwards;
+}
+
+/* BOT CHAT (BIG) MESSAGE WIDGET In (QNA Tab) ------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+/* ================================================================================================================
+   ============================================================== ████████████ ====================================
+   ============================================================== ████████████ ====================================
+   ============================================================== █████        ====================================
+   ============================================================== █████        ====================================
+   Section 6: Media Queries ===================================== ████████████ ====================================
+   Media Queries (Responsive Design for All Tabs) =============== ████    ████ ====================================
+   ============================================================== ████    ████ ====================================
+   ============================================================== ████████████ ====================================
+   ================================================================================================================
+   ================================================================================================================ */
+
+@media (max-width: 768px) {
+    .dashboard-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+
+    .chat-window {
+        grid-column: span 1;
+        width: 100%;
+        height: 400px;
+    }
+
+    #emoji-picker {
+        bottom: 60px;
+        left: 5px;
+        width: 90%;
+        max-height: 200px;
+    }
+
+    .chat-window.chat-expanded {
+        width: 100vw;
+        height: 100vh;
+        max-width: 1200px;
+        max-height: 800px;
+        padding: 20px;
+    }
+
+    .chat-window.chat-expanded .chat-container {
+        max-height: calc(100% - 40px);
+    }
+
+    .logo {
+        margin: 30px auto;
+        width: 150px;
+        border-radius: 20px;
+    }
+
+    .dashboard-heading {
+        font-size: 3.5em;
+        padding: 15px 30px;
+        border-radius: 20px;
+        margin-bottom: 30px;
+    }
+
+    .tab-bar {
+        gap: 15px;
+        padding: 15px 30px;
+        border-radius: 20px;
+        margin-bottom: 30px;
+    }
+
+    .tab {
+        padding: 10px 20px;
+        font-size: 14px;
+        min-width: 100px;
+        border-radius: 16px;
+    }
+
+    .widget {
+        border-radius: 20px;
+        padding: 20px;
+    }
+
+    .widget h3 {
+        font-size: 1.5em;
+    }
+
+    .widget p {
+        font-size: 1em;
+    }
+
+    .action-button {
+        padding: 6px 12px;
+        font-size: 10px;
+        min-width: 70px;
+    }
+
+    .graph-legend p {
+        font-size: 0.7em;
+    }
+
+    .legend-color {
+        width: 10px;
+        height: 10px;
+        border-radius: 3px;
+    }
+
+    /* Adjust Need More Help? widget for smaller screens */
+    .widget[style*="grid-column: 1 / 2"][style*="grid-row: 4 / 5"] {
+        display: block;
+    }
+
+    .widget[style*="grid-column: 1 / 2"][style*="grid-row: 4 / 5"] .button-container {
+        margin-top: 10px;
+    }
+
+    .qna-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+    }
+
+    #p2p .qna-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+
+    /* Ensure toast notifications are visible on smaller screens */
+    .toast {
+        bottom: 10px;
+        right: 10px;
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+}
+
+/* =============================================================================================================
+   ============================================================== ███████████ ==================================
+   ==============================================================          ██ ==================================
+   ==============================================================         ██  ==================================
+   Section 7: Login System Styles ===============================       ██    ==================================
+   Styles for Login Modal and User Info =========================     ██      ==================================
+   ==============================================================    ██       ==================================
+   ==============================================================   ██        ==================================
+   ============================================================== ██          ==================================
+   ============================================================================================================= */
+
+/* Login Modal Overlay */
+.login-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Login Modal Content (Frosted Glass Effect) */
+.login-modal-content {
+    background: linear-gradient(145deg, rgba(176, 176, 176, 0.5), rgba(128, 128, 128, 0.5));
+    /* Frosted translucent gradient */
+    border-radius: 30px;
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    box-shadow:
+        0 18px 36px rgba(50, 50, 50, 0.5),
+        -18px -18px 36px rgba(255, 255, 255, 0.15),
+        inset 6px 6px 15px rgba(0, 0, 0, 0.2),
+        inset -6px -6px 15px rgba(255, 255, 255, 0.3),
+        inset 0 4.5px 9px rgba(255, 255, 255, 0.5),
+        0 0 60px rgba(29, 78, 216, 0.5);
+    /* Softer glow for frosted theme */
+    padding: 40px;
+    width: 400px;
+    max-width: 90%;
+    text-align: center;
+    zoom: 0.2;
+    /* Match dashboard scaling */
+}
+
+/* Login Modal Heading */
+.login-modal-content h2 {
+    font-size: 2.5em;
+    color: #E0E0E0;
+    text-shadow: 0 0 15px rgba(29, 78, 216, 0.7);
+    /* Softer text shadow for frosted theme */
+    animation: glow 4s infinite ease-in-out;
+    margin-bottom: 30px;
+}
+
+/* Input Group */
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+/* Input Labels */
+.input-group label {
+    font-size: 1.2em;
+    color: #E0E0E0;
+    text-shadow: 0 0 15px rgba(29, 78, 216, 0.7);
+    /* Softer text shadow */
+    margin-bottom: 10px;
+    display: block;
+}
+
+/* Input Fields (Frosted Glass Effect) */
+.input-group input {
+    width: 100%;
+    background: linear-gradient(145deg, rgba(96, 96, 96, 0.5), rgba(64, 64, 64, 0.5));
+    /* Frosted translucent gradient */
+    border: none;
+    border-radius: 15px;
+    padding: 10px 15px;
+    color: #E0E0E0;
+    font-family: 'Orbitron', 'Arial', sans-serif;
+    font-size: 1em;
+    box-shadow:
+        0 18px 36px rgba(50, 50, 50, 0.5),
+        -18px -18px 36px rgba(255, 255, 255, 0.15),
+        inset 6px 6px 15px rgba(0, 0, 0, 0.2),
+        inset -6px -6px 15px rgba(255, 255, 255, 0.3),
+        inset 0 4.5px 9px rgba(255, 255, 255, 0.5),
+        0 0 60px rgba(14, 37, 101, 0.5);
+    /* Softer glow */
+    transition: box-shadow 0.2s;
+}
+
+/* Input Focus State */
+.input-group input:focus {
+    outline: none;
+    box-shadow:
+        0 18px 36px rgba(50, 50, 50, 0.5),
+        -18px -18px 36px rgba(255, 255, 255, 0.15),
+        inset 6px 6px 15px rgba(0, 0, 0, 0.2),
+        inset -6px -6px 15px rgba(255, 255, 255, 0.3),
+        inset 0 4.5px 9px rgba(255, 255, 255, 0.5),
+        0 0 60px rgba(70, 120, 255, 0.7);
+    /* Brighter focus glow */
+}
+
+/* Input Placeholder */
+.input-group input::placeholder {
+    color: #A0A0A0;
+    opacity: 0.8;
+    font-family: 'Orbitron', 'Arial', sans-serif;
+}
+
+/* Error Message */
+.error-message {
+    color: #FF5555;
+    font-size: 1em;
+    margin-top: 15px;
+    text-shadow: 0 0 10px rgba(255, 85, 85, 0.6);
+    /* Softer error shadow */
+    display: none;
+}
+
+/* User Info Section (Frosted Glass Effect) */
+.user-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: linear-gradient(145deg, rgba(192, 192, 192, 0.5), rgba(160, 160, 160, 0.5));
+    /* Frosted translucent gradient */
+    border-radius: 30px;
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    box-shadow:
+        0 18px 36px rgba(50, 50, 50, 0.5),
+        -18px -18px 36px rgba(255, 255, 255, 0.15),
+        inset 6px 6px 15px rgba(0, 0, 0, 0.2),
+        inset -6px -6px 15px rgba(255, 255, 255, 0.3),
+        inset 0 4.5px 9px rgba(255, 255, 255, 0.5),
+        0 0 60px rgba(29, 78, 216, 0.5);
+    /* Softer glow */
+    margin: 20px auto;
+    width: fit-content;
+    max-width: 90%;
+    zoom: 0.2;
+    /* Match dashboard scaling */
+    gap: 10px;
+    /* Adds a 40px gap between the username and logout button */
+}
+
+/* Logged-in Username Display */
+.user-info p {
+    font-size: 1.5em;
+    color: #E0E0E0;
+    text-shadow: 0 0 15px rgba(29, 78, 216, 0.7);
+    /* Softer text shadow */
+    margin: 0;
+}
+
+/* Highlight the Username */
+#logged-in-username {
+    font-weight: bold;
+    color: #1E3A8A;
+    text-shadow: 0 0 15px rgba(29, 78, 216, 0.9);
+    /* Slightly stronger shadow for emphasis */
+}
+
+/* Create Account Button Container */
+.create-account-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* ==============================================================================================================
+   ============================================================== █████████ =====================================
+   ============================================================== █████████ =====================================
+   ============================================================== ██     ██ =====================================
+   ============================================================== ██     ██ =====================================
+   Section 8: Login Status Styles =============================== █████████ =====================================
+   Log in styles Styles ========================================= ██     ██ =====================================
+   ============================================================== ██     ██ =====================================
+   ============================================================== █████████ =====================================
+   ============================================================== █████████ =====================================
+   ============================================================================================================== */
+
+/* Section 8: Login Status Styles ////////// */
+.login-status-container {
+    display: flex;
+    align-items: center;
+    /* Vertically center-aligns text and button */
+    justify-content: center;
+    /* Centers both elements as a group */
+    gap: 36px;
+    /* Adds space between the username and logout button */
+
+    color: #E0E0E0;
+    background: linear-gradient(to bottom left, #C0C0C0, #A0A0A0);
+    border-radius: 30px;
+    border: 1.5px solid rgba(255, 255, 250, 0.3);
+    box-shadow:
+        0 18px 36px #32323280,
+        -18px -18px 36px #ffffff26,
+        inset 6px 6px 15px #00000040,
+        inset -6px -6px 15px #ffffff59,
+        inset 0 4.5px 9px #ffffff99,
+        0 0 60px #1d4ed8b3;
+    padding: 22.5px 45px;
+    margin: 45px auto 45px;
+    width: fit-content;
+    position: relative;
+    text-shadow: 1.5px 1.5px 4.5px rgba(0, 0, 0, 0.3);
+    animation: glow 40s infinite ease-in-out;
+    zoom: 0.2;
+}
+
+.login-status-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 9px;
+    /* Adds space between username and user ID */
+}
+
+.login-status-text {
+    font-family: 'Orbitron', 'Arial', sans-serif;
+    font-size: 1.70em;
+    color: #E0E0E0;
+    font-weight: 700;
+    text-align: center;
+    margin: 0;
+    /* ⬅️ Removed the unnecessary margin that pushed it down */
+    line-height: 1.2;
+    /* ⬅️ Helps vertically center the text */
+    text-shadow:
+        0 0 6px #94b3ff,
+        0 0 12px #3b82f6,
+        0 0 18px #2563eb,
+        0 0 24px rgba(29, 78, 216, 0.8),
+        0 0 30px rgba(29, 78, 216, 0.6);
+    animation: glow 3s ease-in-out infinite;
+}
+
+.user-id-text {
+    font-family: 'Orbitron', 'Arial', sans-serif;
+    font-size: 1.2em;
+    /* Slightly smaller than login-status-text */
+    color: #E0E0E0;
+    font-weight: 500;
+    text-align: center;
+    margin: 0;
+    line-height: 1.2;
+    text-shadow:
+        0 0 4.5px #94b3ff,
+        0 0 9px #3b82f6,
+        0 0 13.5px #2563eb,
+        0 0 18px rgba(29, 78, 216, 0.6),
+        0 0 22.5px rgba(29, 78, 216, 0.4);
+    animation: glow 3s ease-in-out infinite;
+}
+
+/* Reuse action-button and glow-blue classes for the logout button */
+#logout-btn {
+    background: linear-gradient(145deg, #b55c5c);
+    box-shadow:
+        0 8px 16px rgba(80, 0, 0, 0.3),
+        /* smaller outer shadow */
+        -12px -12px 24px rgba(255, 235, 235, 0.15),
+        /* soft top-left highlight */
+        inset 2px 2px 6px rgba(120, 0, 0, 0.25),
+        /* reduced inner red glow */
+        inset -4px -4px 9px rgba(255, 180, 180, 0.25),
+        /* softened inner bounce */
+        inset 0 3px 6px rgba(255, 255, 255, 0.4),
+        /* soft highlight top */
+        0 0 25px rgba(255, 60, 60, 0.3);
+    /* subtle outer glow */
+    /* outer red glow */
+    border: none;
+    padding: 12px 24px;
+    border-radius: 24px;
+    color: white;
+    font-family: 'Orbitron', 'Arial', sans-serif;
+    font-size: 18px;
+    min-width: 135px;
+    white-space: nowrap;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    transition: background 0.2s ease-in-out, transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+#logout-btn:hover {
+
+    transform: translateY(3px);
+    box-shadow:
+        0 12px 24px rgba(100, 0, 0, 0.5),
+        inset 0 3px 6px rgba(255, 255, 255, 0.6),
+        0 0 30px rgba(255, 60, 60, 0.8);
+}

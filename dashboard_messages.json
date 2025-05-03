@@ -1,0 +1,11 @@
+[
+  {
+   "type": "user",
+   "userName": "User",
+   "content": "hi",
+   "timestamp": "[14:16 PM]",
+   "status": "Sent",
+   "messageId": "User-17454488968313-hi",
+   "chatType": "dashboard"
+  }
+]
